@@ -1,10 +1,10 @@
 
-export default function Component() {
+export default function {{title}}() {
 
     return (
 
         <>
-            <h1>Component name</h1>
+            <h1>{{content}}</h1>
         </>
 
     )
