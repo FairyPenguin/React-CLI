@@ -21,6 +21,7 @@
     "figlet": "^1.7.0",
     "gradient-string": "^2.0.2",
     "inquirer": "^9.2.17",
+    "mustache": "^4.2.0",
     "nanospinner": "^1.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

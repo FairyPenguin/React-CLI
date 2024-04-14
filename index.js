@@ -15,10 +15,11 @@ import path from "path";
 import React from "react";
 import ReactDOMServer from 'react-dom/server';
 import { renderToString } from 'react-dom/server';
+import mustache from "mustache";
 
 
 
-React.jsx = React.jsx || function () { return this._jsx; };
+// React.jsx = React.jsx || function () { return this._jsx; };
 
 // const Button2 = () => <button>Click me</button>;
 
@@ -104,13 +105,28 @@ async function createFilesAndFolders() {
     const folderPath = path.join("./", `${choices.name}`);
     const filerPath = path.join(`${folderPath}/`, `${choices.name}.${choices.extention}`);
 
-    // const fileContent = Data
+    const templateFilePath = path.join("./template.txt")
+    const fileContent = fs.readFileSync(templateFilePath, "utf-8")
 
-    // await fs.mkdirSync()
+    const name = "Mahmoud"
+    const variable = fileContent.replace("Component", name)
+
+    const template = fs.readFileSync('./template.jsx', 'utf8');
+
+    const data = {
+        title: 'Hello, from Reactjs!',
+        content: 'This is some dynamic content.'
+    }
+
+    const output = mustache.render(template, data)
+    // console.log(fileContent);
 
     try {
         fs.mkdirSync(folderPath);
-        fs.writeFileSync(filerPath, "fileContent");
+        // fs.writeFileSync(filerPath, variable);
+        fs.writeFileSync(filerPath, output);
+        // console.log(fileContent);
+
         console.log('Folder and file created successfully!');
     } catch (err) {
         console.error('Error creating folder or file:', err);
