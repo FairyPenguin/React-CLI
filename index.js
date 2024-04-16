@@ -9,24 +9,14 @@ import inquirer from "inquirer"
 import { input } from '@inquirer/prompts';
 import fs from "fs"
 import path from "path";
-// import Button from "./src/Button.jsx";
 // import fspromise from "fs/promises"
 // <====== //
 import React from "react";
 import ReactDOMServer from 'react-dom/server';
 import { renderToString } from 'react-dom/server';
 import mustache from "mustache";
-// import { figFonts } from "figlet";
+// <====== 
 
-
-
-// React.jsx = React.jsx || function () { return this._jsx; };
-
-// const Button2 = () => <button>Click me</button>;
-
-// const reactHtml = renderToString(<Button />);
-
-// console.log(reactHtml);
 
 const msg = `Welcome,\n React CLI
 This is the start-----------------------------------
@@ -164,8 +154,8 @@ async function createFilesAndFolders() {
     const template = fs.readFileSync('./template.txt', 'utf8');
 
     const data = {
-        title: 'Hello, from Reactjs!',
-        content: 'This is some dynamic content.'
+        title: choices.name,
+        content: `${choices.name} Component, Generated via React-CLI`
     }
 
     const output = mustache.render(template, data)
