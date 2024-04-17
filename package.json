@@ -1,8 +1,9 @@
 {
   "name": "react-cli",
+  "private": false,
   "version": "0.0.1",
   "description": "",
-  "main": "src/index.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "build": "webpack --config webpack.config.js",
@@ -12,8 +13,6 @@
   },
   "bin": "./index.js",
   "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "@inquirer/prompts": "^4.3.2",
     "chalk": "^5.3.0",
@@ -36,5 +35,14 @@
     "webpack": "^5.91.0",
     "webpack-cli": "^5.1.4",
     "webpack-node-externals": "^3.0.0"
-  }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FairyPenguin/React-CLI"
+  },
+  "author": "Fairy-Penguin | Mahmoud-Az"
 }
