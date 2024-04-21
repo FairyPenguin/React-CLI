@@ -7,6 +7,7 @@ import chalkAnimaion from "chalk-animation";
 import figlet from "figlet";
 import gradient from "gradient-string";
 import inquirer from "inquirer"
+import { createSpinner } from 'nanospinner';
 import { input } from '@inquirer/prompts';
 import fs from "fs"
 import path from "path";
@@ -83,7 +84,7 @@ function printUserChoices() {
 }
 
 
-const wait = (ms = 2000) => new Promise((resolve) => setTimeout(resolve, ms))
+const waitingPeriod = (ms = 2000) => new Promise((resolve) => setTimeout(resolve, ms))
 
 async function welcome() {
 
@@ -212,6 +213,10 @@ async function createFilesAndFolders() {
     const output = mustache.render(template, data)
 
 
+    const spinner = createSpinner("\n No magic is happening🔮, just a function executing code to generate your files/folders in the file-system 🚦").start()
+
+    await waitingPeriod()
+
     try {
         fs.mkdirSync(folderPath);
         fs.writeFileSync(componentFilePath, output);
@@ -221,12 +226,22 @@ async function createFilesAndFolders() {
             fs.writeFileSync(cssFilePath, "/* CSS Module */")
         }
 
-        console.log('Folder and file created successfully!');
+        // "No magic is happening🔮, just a function executing code to generate your files/folders in the filesystem 🚦"
+
+        spinner.success(chalk.bold(gradient.pastel(`
+        // '🟢 Your component ${choices.componentName} files created successfully  ✅'`)))
+
+        // console.log(chalk.bold(gradient.pastel(`
+        // '🟢 Your component ${choices.componentName} files created successfully  ✅'`)))
+
     } catch (err) {
-        console.error('Error creating folder or file:', err);
+        console.error("\n ❌ Creating component Failed:", err);
+
     }
 
 }
+
+
 
 await askForFolderOrFile()
 
@@ -240,7 +255,6 @@ await createFilesAndFolders()
 
 spacer
 
-console.log(gradient.pastel(`'Your component ${choices.name} files created successfully 🔮'`))
 
 spacer
 

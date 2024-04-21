@@ -1,16 +1,16 @@
 // ======/ Imports /====== 
 
 // CSS-Module File Import
-import styles  from "./D.module.css";
+import styles  from "./ASKJ.module.css";
 
 // Main Component Exported Function
 
-export default function D() {
+export default function ASKJ() {
 
     return (
 
         <>
-            <h1>D Component, Generated via React-CLI</h1>
+            <h1>ASKJ Component, Generated via React-CLI</h1>
         </>
 
     )
