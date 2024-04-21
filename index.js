@@ -79,7 +79,7 @@ function printUserChoices() {
     ✳️Create CSS File?: ${choices.cssFile}
     ✳️JavaScript or TypeScript Component?: ${choices.extention}
     `
-    console.log(userChoices);
+    // console.log(userChoices);
     return userChoices
 }
 
@@ -217,7 +217,9 @@ async function createFilesAndFolders() {
 
     await waitingPeriod()
 
+
     try {
+
         fs.mkdirSync(folderPath);
         fs.writeFileSync(componentFilePath, output);
         // fs.writeFileSync(filerPath, output);
@@ -226,22 +228,59 @@ async function createFilesAndFolders() {
             fs.writeFileSync(cssFilePath, "/* CSS Module */")
         }
 
-        // "No magic is happening🔮, just a function executing code to generate your files/folders in the filesystem 🚦"
 
-        spinner.success(chalk.bold(gradient.pastel(`
-        // '🟢 Your component ${choices.componentName} files created successfully  ✅'`)))
+        spinner.success({
+            text: chalk.bold(gradient.pastel(`
+        '🟢 Your component ${choices.componentName} files created successfully  ✅'`))
+        })
 
-        // console.log(chalk.bold(gradient.pastel(`
-        // '🟢 Your component ${choices.componentName} files created successfully  ✅'`)))
+        // return true
+
 
     } catch (err) {
+
+        // const spinner = createSpinner("\n No magic is happening🔮, just a function executing code to generate your files/folders in the file-system 🚦").start()
+
+        // await waitingPeriod()
+
         console.error("\n ❌ Creating component Failed:", err);
+
+        spinner.error({ text: "FAILED ❌" })
+
+        // return false
 
     }
 
 }
 
+async function creationStatus(func) {
 
+    const spinner = createSpinner("\n No magic is happening🔮, just a function executing code to generate your files/folders in the file-system 🚦").start()
+
+    await waitingPeriod()
+
+    const checkCreation = await func
+
+    if (checkCreation) {
+
+        spinner.success(chalk.bold(gradient.pastel(`
+         '🟢 Your component ${choices.componentName} files created successfully  ✅'`)))
+
+    } else {
+
+        spinner.error()
+
+    }
+
+
+    // "No magic is happening🔮, just a function executing code to generate your files/folders in the filesystem 🚦"
+
+
+    // console.log(chalk.bold(gradient.pastel(`
+    // '🟢 Your component ${choices.componentName} files created successfully  ✅'`)))
+
+
+}
 
 await askForFolderOrFile()
 
@@ -253,9 +292,6 @@ await getCssFileName()
 
 await createFilesAndFolders()
 
-spacer
+// await creationStatus(createFilesAndFolders())
 
-
-spacer
-
-printUserChoices()
+console.log(`\n ${printUserChoices()}`);

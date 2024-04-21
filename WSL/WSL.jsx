@@ -1,16 +1,16 @@
 // ======/ Imports /====== 
 
 // CSS-Module File Import
-import styles  from "./ASKJ.module.css";
+import styles  from "./WSL.module.css";
 
 // Main Component Exported Function
 
-export default function ASKJ() {
+export default function WSL() {
 
     return (
 
         <>
-            <h1>ASKJ Component, Generated via React-CLI</h1>
+            <h1>WSL Component, Generated via React-CLI</h1>
         </>
 
     )
