@@ -19,36 +19,6 @@ import mustache from "mustache";
 
 
 
-// figlet.text(msg, {
-
-//     font: "Banner3",
-
-//     // horizontalLayout: "default",
-//     // verticalLayout: "default",
-//     width: 80,
-//     // whitespaceBreak: true,
-
-// }, (err, data) => {
-
-//     console.log(gradient.cristal.multiline(data));
-// })
-
-const msg2 = chalk.cyanBright.bold.underline("Welcome, React CLI 🧪\n")
-
-
-
-// const fontsList = figlet.fonts(function (err, fonts) {
-//     if (err) {
-//         console.log("something went wrong...");
-//         console.dir(err);
-//         return;
-//     }
-//     console.dir(fonts);
-// });
-
-// console.log(fontsList);
-
-const spacer = console.log(" \n "); // space for an empty line
 
 let choices = {
     "folderOrFile": "",
@@ -56,6 +26,8 @@ let choices = {
     "extention": "",
     "cssFile": ""
 };
+
+const waitingPeriod = (ms = 2000) => new Promise((resolve) => setTimeout(resolve, ms))
 
 function printUserChoices() {
 
@@ -84,20 +56,33 @@ function printUserChoices() {
 }
 
 
-const waitingPeriod = (ms = 2000) => new Promise((resolve) => setTimeout(resolve, ms))
-
 async function welcome() {
 
-
+    const msg2 = chalk.cyanBright.bold("  Welcome, <React CLI /> 🧪\n Generate React Components & CSS-Modules Files From the Termianl")
     // await wait()
+
+
+    figlet.text("< React CLI />", {
+
+        // font: "Whimsy",
+
+        // horizontalLayout: "default",
+        // verticalLayout: "default",
+        width: 80,
+        // whitespaceBreak: true,
+
+    }, (err, data) => {
+
+        console.log(gradient.cristal(data));
+    })
+
     console.log(msg2);
 
 
-    // messageText.stop()
+    await waitingPeriod(1000)
 
 }
 
-await welcome()
 
 async function askForFolderOrFile() {
 
@@ -213,7 +198,7 @@ async function createFilesAndFolders() {
     const output = mustache.render(template, data)
 
 
-    const spinner = createSpinner("\n No magic is happening🔮, just a function executing code to generate your files/folders in the file-system 🚦").start()
+    const spinner = createSpinner(chalk.bgBlack.yellowBright.bold("\n No magic is happening 🔮, just a function executing code ⚙️ to generate your files and folders in the file system🚦.")).start()
 
     await waitingPeriod()
 
@@ -231,7 +216,7 @@ async function createFilesAndFolders() {
 
         spinner.success({
             text: chalk.bold(gradient.pastel(`
-        '🟢 Your component ${choices.componentName} files created successfully  ✅'`))
+        '🟢 Your component ⚜️ ${choices.componentName} ⚜️ files created successfully  ✅'`))
         })
 
 
@@ -273,6 +258,8 @@ async function creationStatus(func) {
 
 
 }
+
+await welcome()
 
 await askForFolderOrFile()
 
