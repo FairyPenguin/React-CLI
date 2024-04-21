@@ -47,6 +47,7 @@ const msg2 = chalk.cyanBright.bold.underline("Welcome, React CLI 🧪\n")
 
 // console.log(fontsList);
 
+const spacer = console.log(" \n "); // space for an empty line
 
 let choices = {
     "folderOrFile": "",
@@ -56,7 +57,8 @@ let choices = {
 };
 
 function printUserChoices() {
-    console.log("Your choices:");
+
+    console.log(chalk.whiteBright.bgCyanBright.bold("\n Your choices:"));
     for (const choice in choices) {
         // console.log(`✳️${choice}: ${choices[choice]}`);
 
@@ -80,7 +82,6 @@ function printUserChoices() {
     return userChoices
 }
 
-const spacer = console.log(" \n "); // space for an empty line
 
 const wait = (ms = 2000) => new Promise((resolve) => setTimeout(resolve, ms))
 
