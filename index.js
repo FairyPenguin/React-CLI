@@ -17,9 +17,6 @@ import mustache from "mustache";
 // <====== 
 
 
-const msg = `Welcome,\n React CLI 🧪
-This is the start-----------------------------------
-`
 
 // figlet.text(msg, {
 
@@ -35,7 +32,7 @@ This is the start-----------------------------------
 //     console.log(gradient.cristal.multiline(data));
 // })
 
-const msg2 = "Welcome, React CLI\n"
+const msg2 = chalk.cyanBright.bold.underline("Welcome, React CLI 🧪\n")
 
 
 
@@ -53,18 +50,45 @@ const msg2 = "Welcome, React CLI\n"
 
 let choices = {
     "folderOrFile": "",
-    "name": "",
+    "componentName": "",
     "extention": "",
     "cssFile": ""
 };
+
+function printUserChoices() {
+    console.log("Your choices:");
+    for (const choice in choices) {
+        // console.log(`✳️${choice}: ${choices[choice]}`);
+
+        // console.log(`
+        // ✳️Single Component File or Folder with component files nested?: ${choices.folderOrFile}
+        // ✳️Component Name?: ${choices.componentName}
+        // ✳️Create CSS File?: ${choices.cssFile}
+        // ✳️JavaScript or TypeScript Component?: ${choices.extention}
+        // `);
+
+
+    }
+
+    const userChoices = `
+    ✳️Single Component File or Folder with component files nested?: ${choices.folderOrFile}
+    ✳️Component Name?: ${choices.componentName}
+    ✳️Create CSS File?: ${choices.cssFile}
+    ✳️JavaScript or TypeScript Component?: ${choices.extention}
+    `
+    console.log(userChoices);
+    return userChoices
+}
+
+const spacer = console.log(" \n "); // space for an empty line
 
 const wait = (ms = 2000) => new Promise((resolve) => setTimeout(resolve, ms))
 
 async function welcome() {
 
 
-    await wait()
-    console.log(gradient.cristal.multiline(msg2));
+    // await wait()
+    console.log(msg2);
 
 
     // messageText.stop()
@@ -79,12 +103,12 @@ async function askForFolderOrFile() {
         name: "Single Component File or Folder with component files nested",
         type: "rawlist",
         // message: "Choose if you want to create the component as a seperate file or inside a folder",
-        choices: ["Single Component File 🗋", "Folder/Component File 🗀"],
+        choices: ["Single Component File 📄", "Folder/Component File 📁"],
         prefix: "Choose if you want to create the component as a seperate file or inside a folder\n"
 
     })
 
-    choices.folderOrFile = question["File or Folder"]
+    choices.folderOrFile = question["Single Component File or Folder with component files nested"]
 
 
 }
@@ -118,23 +142,24 @@ Don't 👇
         }
     })
 
-    choices.name = question["Component Name"]
+    choices.componentName = question["Component Name"]
 
 }
 
 async function getFileExtention() {
 
     const question = await inquirer.prompt({
-        name: "Choosed Extention",
+        name: "TypeScript or JavaScript Component?",
         type: "rawlist",
         choices: ["jsx", "tsx"],
+        prefix: "Choose javascript(.jsx) or typscript(.tsx) component \n",
         default() {
             return "jsx"
         }
     })
 
 
-    choices.extention = question["Choosed Extention"]
+    choices.extention = question["TypeScript or JavaScript Component?"]
 
 
 }
@@ -168,19 +193,19 @@ async function askForNextjsRoute() {
 async function createFilesAndFolders() {
 
 
-    const folderPath = path.join("./", `${choices.name}`);
+    const folderPath = path.join("./", `${choices.componentName}`);
 
-    const componentFilePath = path.join(`${folderPath}/`, `${choices.name}.${choices.extention}`);
+    const componentFilePath = path.join(`${folderPath}/`, `${choices.componentName}.${choices.extention}`);
 
-    const cssFilePath = path.join(`${folderPath}/`, `${choices.name}.module.css`);
+    const cssFilePath = path.join(`${folderPath}/`, `${choices.componentName}.module.css`);
 
 
     const template = fs.readFileSync('./template.txt', 'utf8');
 
     const data = {
-        title: choices.name,
-        content: `${choices.name} Component, Generated via React-CLI`,
-        cssFileRelativePath: `${choices.name}.module.css`
+        title: choices.componentName,
+        content: `${choices.componentName} Component, Generated via React-CLI`,
+        cssFileRelativePath: `${choices.componentName}.module.css`
     }
 
     const output = mustache.render(template, data)
@@ -212,9 +237,10 @@ await getCssFileName()
 
 await createFilesAndFolders()
 
-console.log(gradient.pastel('Your component files created successfully 🔮'))
+spacer
 
-console.log(choices.folderOrFile);
-console.log(choices.name);
-console.log(choices.extention);
-console.log(choices.cssFile);
+console.log(gradient.pastel(`'Your component ${choices.name} files created successfully 🔮'`))
+
+spacer
+
+printUserChoices()
