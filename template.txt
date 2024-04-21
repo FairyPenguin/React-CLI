@@ -1,5 +1,9 @@
+// ======/ Imports /====== 
+
+// CSS-Module File Import
 import styles  from "./{{cssFileRelativePath}}";
 
+// Main Component Exported Function
 
 export default function {{title}}() {
 

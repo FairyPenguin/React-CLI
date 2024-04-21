@@ -12,14 +12,12 @@ import fs from "fs"
 import path from "path";
 // import fspromise from "fs/promises"
 // <====== //
-import React from "react";
-import ReactDOMServer from 'react-dom/server';
-import { renderToString } from 'react-dom/server';
+
 import mustache from "mustache";
 // <====== 
 
 
-const msg = `Welcome,\n React CLI
+const msg = `Welcome,\n React CLI 🧪
 This is the start-----------------------------------
 `
 
@@ -78,11 +76,11 @@ await welcome()
 async function askForFolderOrFile() {
 
     const question = await inquirer.prompt({
-        name: "File or Folder",
+        name: "Single Component File or Folder with component files nested",
         type: "rawlist",
         // message: "Choose if you want to create the component as a seperate file or inside a folder",
-        choices: ["Single File", "Folder/File"],
-        prefix: "Choose if you want to create the component as a seperate file or inside a folder"
+        choices: ["Single Component File 🗋", "Folder/Component File 🗀"],
+        prefix: "Choose if you want to create the component as a seperate file or inside a folder\n"
 
     })
 
@@ -152,7 +150,17 @@ async function getCssFileName() {
     })
 
     choices.cssFile = question["Create CSS File"]
+}
 
+
+async function askForNextjsRoute() {
+
+    const question = await inquirer.prompt({
+        name: "Create CSS File",
+        type: "list",
+        choices: ["Yes", "No"],
+
+    })
 
 }
 
@@ -204,7 +212,7 @@ await getCssFileName()
 
 await createFilesAndFolders()
 
-console.log(gradient.rainbow('I love gradient-strings!'))
+console.log(gradient.pastel('Your component files created successfully 🔮'))
 
 console.log(choices.folderOrFile);
 console.log(choices.name);
