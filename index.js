@@ -56,7 +56,8 @@ const msg2 = "Welcome, React CLI\n"
 let choices = {
     "folderOrFile": "",
     "name": "",
-    "extention": ""
+    "extention": "",
+    "cssFile": ""
 };
 
 const wait = (ms = 2000) => new Promise((resolve) => setTimeout(resolve, ms))
@@ -115,7 +116,7 @@ Don't 👇
             `;
         },
         default() {
-            return "React CLI Component"
+            return "MagicButton"
         }
     })
 
@@ -134,39 +135,57 @@ async function getFileExtention() {
         }
     })
 
+
     choices.extention = question["Choosed Extention"]
+
+
+}
+
+async function getCssFileName() {
+    const question = await inquirer.prompt({
+        name: "Create CSS File",
+        type: "list",
+        choices: ["Yes", "No"],
+        // default() {
+        //     return "jsx"
+        // }
+    })
+
+    choices.cssFile = question["Create CSS File"]
+
 
 }
 
 
 async function createFilesAndFolders() {
 
-    // const currentDir = __dirname
 
     const folderPath = path.join("./", `${choices.name}`);
-    const filerPath = path.join(`${folderPath}/`, `${choices.name}.${choices.extention}`);
 
-    const templateFilePath = path.join("./template.txt")
-    const fileContent = fs.readFileSync(templateFilePath, "utf-8")
+    const componentFilePath = path.join(`${folderPath}/`, `${choices.name}.${choices.extention}`);
 
-    const name = "Mahmoud"
-    const variable = fileContent.replace("Component", name)
+    const cssFilePath = path.join(`${folderPath}/`, `${choices.name}.module.css`);
+
 
     const template = fs.readFileSync('./template.txt', 'utf8');
 
     const data = {
         title: choices.name,
-        content: `${choices.name} Component, Generated via React-CLI`
+        content: `${choices.name} Component, Generated via React-CLI`,
+        cssFileRelativePath: `${choices.name}.module.css`
     }
 
     const output = mustache.render(template, data)
-    // console.log(fileContent);
+
 
     try {
         fs.mkdirSync(folderPath);
-        fs.writeFileSync(filerPath, output);
+        fs.writeFileSync(componentFilePath, output);
         // fs.writeFileSync(filerPath, output);
         // console.log(fileContent);
+        if (choices.cssFile === "Yes") {
+            fs.writeFileSync(cssFilePath, "/* CSS Module */")
+        }
 
         console.log('Folder and file created successfully!');
     } catch (err) {
@@ -181,11 +200,13 @@ await getFileExtention()
 
 await getFileAndFolderName()
 
-await createFilesAndFolders()
+await getCssFileName()
 
+await createFilesAndFolders()
 
 console.log(gradient.rainbow('I love gradient-strings!'))
 
 console.log(choices.folderOrFile);
 console.log(choices.name);
 console.log(choices.extention);
+console.log(choices.cssFile);
