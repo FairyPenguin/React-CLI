@@ -234,20 +234,12 @@ async function createFilesAndFolders() {
         '🟢 Your component ${choices.componentName} files created successfully  ✅'`))
         })
 
-        // return true
-
 
     } catch (err) {
 
-        // const spinner = createSpinner("\n No magic is happening🔮, just a function executing code to generate your files/folders in the file-system 🚦").start()
-
-        // await waitingPeriod()
+        spinner.error({ text: "\n 🔴 Failed to create your component ❌ \n ⚠️ Check the error message below 👇" })
 
         console.error("\n ❌ Creating component Failed:", err);
-
-        spinner.error({ text: "FAILED ❌" })
-
-        // return false
 
     }
 
