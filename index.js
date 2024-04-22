@@ -11,13 +11,16 @@ import { createSpinner } from 'nanospinner';
 import { input } from '@inquirer/prompts';
 import fs from "fs"
 import path from "path";
-// import fspromise from "fs/promises"
-// <====== //
+import { fileURLToPath } from 'url';
 
 import mustache from "mustache";
+// <====== //
+
 // <====== 
 
+const __filename = fileURLToPath(import.meta.url)
 
+const __dirname = path.dirname(__filename)
 
 
 let choices = {
@@ -58,11 +61,11 @@ function printUserChoices() {
 
 async function welcome() {
 
-    const msg2 = chalk.cyanBright.bold("  Welcome, <React CLI /> 🧪\n Generate React Components & CSS-Modules Files From the Termianl")
+    const msg2 = chalk.cyanBright.bold("Welcome,  <React Outil /> 🧪 \n  \n» A CLI Tool to Generate React Components & CSS-Modules Files From the Termianl.")
     // await wait()
 
 
-    figlet.text("< React CLI />", {
+    figlet.text("< React Outil / >", {
 
         // font: "Whimsy",
 
@@ -186,15 +189,13 @@ async function createFilesAndFolders() {
 
     const cssFilePath = path.join(`${folderPath}/`, `${choices.componentName}.module.css`);
 
-    const templatePath = path.join("./", "template.txt")
-
-    console.log(templatePath);
+    const templatePath = path.join(__dirname, "template.txt")
 
     const template = fs.readFileSync(templatePath, 'utf8');
 
     const data = {
         title: choices.componentName,
-        content: `${choices.componentName} Component, Generated via React-CLI`,
+        content: `${choices.componentName} Component, Generated via React-Outil`,
         cssFileRelativePath: `${choices.componentName}.module.css`
     }
 
