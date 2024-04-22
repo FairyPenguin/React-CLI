@@ -79,7 +79,7 @@ async function welcome() {
     console.log(msg2);
 
 
-    await waitingPeriod(1000)
+    await waitingPeriod(250)
 
 }
 
@@ -186,8 +186,11 @@ async function createFilesAndFolders() {
 
     const cssFilePath = path.join(`${folderPath}/`, `${choices.componentName}.module.css`);
 
+    const templatePath = path.join("./", "template.txt")
 
-    const template = fs.readFileSync('./template.txt', 'utf8');
+    console.log(templatePath);
+
+    const template = fs.readFileSync(templatePath, 'utf8');
 
     const data = {
         title: choices.componentName,
