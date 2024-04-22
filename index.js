@@ -3,12 +3,12 @@
 
 // IMPORTS ======> //
 import chalk from "chalk";
-import chalkAnimaion from "chalk-animation";
+// import chalkAnimaion from "chalk-animation";
 import figlet from "figlet";
 import gradient from "gradient-string";
 import inquirer from "inquirer"
 import { createSpinner } from 'nanospinner';
-import { input } from '@inquirer/prompts';
+// import { input } from '@inquirer/prompts';
 import fs from "fs"
 import path from "path";
 import { fileURLToPath } from 'url';
@@ -61,7 +61,7 @@ function printUserChoices() {
 
 async function welcome() {
 
-    const msg2 = chalk.cyanBright.bold("Welcome,  <React Outil /> 🧪 \n  \n» A CLI Tool to Generate React Components & CSS-Modules Files From the Termianl.")
+    const msg2 = chalk.cyanBright.bold("\n Welcome,  <React Outil /> 🧪 \n  \n» A CLI Tool to Generate React Components & CSS-Modules Files From the Termianl.")
     // await wait()
 
 
@@ -156,7 +156,7 @@ async function getFileExtention() {
 
 async function getCssFileName() {
     const question = await inquirer.prompt({
-        name: "Create CSS File",
+        name: "Create a CSS File?",
         type: "list",
         choices: ["Yes", "No"],
         // default() {
