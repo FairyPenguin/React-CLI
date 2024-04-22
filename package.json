@@ -1,8 +1,8 @@
 {
   "name": "react-outil",
   "private": false,
-  "version": "0.0.4",
-  "description": "",
+  "version": "0.0.5",
+  "description": "A CLI tool to generate React components (folders and files) & CSS-Modules files from the terminal that support typescript.",
   "main": "index.js",
   "type": "module",
   "scripts": {
