@@ -22,6 +22,25 @@ const __filename = fileURLToPath(import.meta.url)
 
 const __dirname = path.dirname(__filename)
 
+const packageJsonFilePath = path.join(__dirname, "package.json")
+
+const packageJsonFile = JSON.parse(fs.readFileSync(packageJsonFilePath, "utf-8"))
+
+const version = packageJsonFile.version
+
+console.log(version);
+
+
+const args = process.argv.slice(2)
+
+if (args.includes("-v") || args.includes("--v") || args.includes("--version") || args.includes("-version")) {
+    console.log(`Version: ${version}`);
+
+    console.log(`Latest Version: ${version}`);
+
+    process.exit(0)
+}
+
 
 let choices = {
     "folderOrFile": "",
@@ -82,7 +101,7 @@ async function welcome() {
     console.log(msg2);
 
 
-    await waitingPeriod(250)
+    await waitingPeriod(125)
 
 }
 
@@ -278,3 +297,5 @@ await createFilesAndFolders()
 // await creationStatus(createFilesAndFolders())
 
 console.log(`\n ${printUserChoices()}`);
+
+
