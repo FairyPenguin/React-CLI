@@ -26,17 +26,44 @@ const packageJsonFilePath = path.join(__dirname, "package.json")
 
 const packageJsonFile = JSON.parse(fs.readFileSync(packageJsonFilePath, "utf-8"))
 
-const version = packageJsonFile.version
+const installedVersion = packageJsonFile.version
 
-console.log(version);
-
+const lastestVersion = "0.0.10"
 
 const args = process.argv.slice(2)
 
 if (args.includes("-v") || args.includes("--v") || args.includes("--version") || args.includes("-version")) {
-    console.log(`Version: ${version}`);
 
-    console.log(`Latest Version: ${version}`);
+    //Table
+
+
+    // console.log(`- Installed Version: ${installedVersion} \n`);
+
+    // console.log(`- Latest Version:    ${lastestVersion}`);
+
+    const versionsData = [
+        {
+            "Installed Version": `${installedVersion}`,
+            "Latest Version": `${lastestVersion}`
+        }
+    ]
+
+    console.table(versionsData, ["Installed Version", "Latest Version"], ["center", "center"])
+
+    if (installedVersion !== lastestVersion) {
+
+        // show a message with how to update to the latest version 
+        //
+        console.log(`\nYou are not using the latest version,\n
+        Please update using one of these commands\n
+        🔑 npm update -g react-outil \n
+        🔑 pnpm update -g react-outil \n
+        🔑 yarn update -g react-outil \n
+        `);
+
+    }
+
+
 
     process.exit(0)
 }
@@ -59,7 +86,7 @@ function printUserChoices() {
 
         // console.log(`
         // ✳️Single Component File or Folder with component files nested?: ${choices.folderOrFile}
-        // ✳️Component Name?: ${choices.componentName}
+        // ✳️Component Name?: ${choices.componentName} 
         // ✳️Create CSS File?: ${choices.cssFile}
         // ✳️JavaScript or TypeScript Component?: ${choices.extention}
         // `);
@@ -70,8 +97,8 @@ function printUserChoices() {
     const userChoices = `
     ✳️Single Component File or Folder with component files nested?: ${choices.folderOrFile}
     ✳️Component Name?: ${choices.componentName}
-    ✳️Create CSS File?: ${choices.cssFile}
     ✳️JavaScript or TypeScript Component?: ${choices.extention}
+    ✳️Create CSS File?: ${choices.cssFile}
     `
     // console.log(userChoices);
     return userChoices
@@ -110,7 +137,7 @@ async function askForFolderOrFile() {
 
     const question = await inquirer.prompt({
         name: "Single Component File or Folder with component files nested",
-        type: "rawlist",
+        type: "list",
         // message: "Choose if you want to create the component as a seperate file or inside a folder",
         choices: ["Single Component File 📄", "Folder/Component File 📁"],
         prefix: "Choose if you want to create the component as a seperate file or inside a folder\n"
@@ -159,7 +186,7 @@ async function getFileExtention() {
 
     const question = await inquirer.prompt({
         name: "TypeScript or JavaScript Component?",
-        type: "rawlist",
+        type: "list",
         choices: ["jsx", "tsx"],
         prefix: "Choose javascript(.jsx) or typscript(.tsx) component \n",
         default() {
@@ -183,7 +210,7 @@ async function getCssFileName() {
         // }
     })
 
-    choices.cssFile = question["Create CSS File"]
+    choices.cssFile = question["Create a CSS File?"]
 }
 
 
