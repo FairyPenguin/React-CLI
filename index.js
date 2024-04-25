@@ -14,6 +14,7 @@ import path from "path";
 import { fileURLToPath } from 'url';
 
 import mustache from "mustache";
+import { log } from "console";
 // <====== //
 
 // <====== 
@@ -28,41 +29,64 @@ const packageJsonFile = JSON.parse(fs.readFileSync(packageJsonFilePath, "utf-8")
 
 const installedVersion = packageJsonFile.version
 
-const lastestVersion = "0.0.8"
+
+async function latestVersionFetcher() {
+    const packageLatestVersionURL = "https://registry.npmjs.org/react-outil/latest"
+
+    try {
+        const response = await fetch(packageLatestVersionURL)
+
+        const versionData = await response.json()
+
+        const latestVersion = versionData.version
+
+        const latestVersionDummy = "0.0.0"
+
+        return latestVersion
+
+    } catch (error) {
+        console.error("Error occurred while fetching the latest version:", error);
+
+        return null;
+
+    }
+}
+
+const lastestVersion = await latestVersionFetcher()
+
+function compareVersion() {
+
+
+    let updateStatus = ""
+
+    const updateCommandsNote = gradient.summer(`\n 
+    Use one of these commands to update:\n
+🔑 npm update -g react-outil - 🔑 pnpm update -g react-outil - 🔑 yarn update -g react-outil`)
+
+    if (installedVersion !== lastestVersion) {
+
+        updateStatus =
+            ` ${chalk.redBright.bold.underline.italic(`🔴UPDATE TO THE LATEST VERSION.`)} ${updateCommandsNote}`
+
+    } else {
+
+        updateStatus =
+            chalk.greenBright.italic.underline.bold("✅YOU ARE USING THE LATEST VERSION.")
+    }
+
+    const versionMessage = `${gradient.fruit(`\n 🔵Installed-Version: ${installedVersion} ➡️ ⚪️Latest-Version: ${lastestVersion}`)} ${updateStatus}\n`
+
+
+    console.log(versionMessage);
+
+}
+
 
 const args = process.argv.slice(2)
 
 if (args.includes("-v") || args.includes("--v") || args.includes("--version") || args.includes("-version")) {
 
-    //Table
-
-
-    // console.log(`- Installed Version: ${installedVersion} \n`);
-
-    // console.log(`- Latest Version:    ${lastestVersion}`);
-
-    const versionsData = [
-        {
-            "Installed Version": `${installedVersion}`,
-            "Latest Version": `${lastestVersion}`
-        }
-    ]
-
-    console.table(versionsData, ["Installed Version", "Latest Version"], ["center", "center"])
-
-    if (installedVersion !== lastestVersion) {
-
-        // show a message with how to update to the latest version 
-        //
-        console.log(`\nYou are not using the latest version,\n
-        Update using one of these commands\n
-        🔑 npm update -g react-outil \n
-        🔑 pnpm update -g react-outil \n
-        🔑 yarn update -g react-outil \n
-        `);
-
-    }
-
+    compareVersion()
 
 
     process.exit(0)
@@ -132,19 +156,21 @@ async function welcome() {
 
     let updateStatus = ""
 
-    if (installedVersion !== lastestVersion) {
-        const updateCommandsNote = gradient.summer(`\n 
-        Use one of these commands to update:\n
+    const updateCommandsNote = gradient.summer(`\n 
+    Use one of these commands to update:\n
 🔑 npm update -g react-outil - 🔑 pnpm update -g react-outil - 🔑 yarn update -g react-outil`)
 
+    if (installedVersion !== lastestVersion) {
+
         updateStatus =
-            ` ${chalk.redBright.bold(`🔴Update to the latest version.`)} ${updateCommandsNote}`
+            ` ${chalk.redBright.bold.underline.italic(`🔴UPDATE TO THE LATEST VERSION.`)} ${updateCommandsNote}`
 
     } else {
 
         updateStatus =
-            chalk.greenBright.bold.underline("✅You are using the latest version.")
+            chalk.greenBright.italic.underline.bold("✅YOU ARE USING THE LATEST VERSION.")
     }
+
 
     const welcomeMessageVersionNote = `${gradient.fruit(`\n 🔵Installed-Version: ${installedVersion} ➡️ Latest-Version: ${lastestVersion}`)} ${updateStatus}\n`
 
