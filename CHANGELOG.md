@@ -23,3 +23,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - Starting time optimized.
 - Fixed grammar mistakes.
+
+---
+
+## [0.0.11] - 2024-04-25
+
+### Added
+
+- Better error messages.
+
+- Error messages explination with more details about the error casue.
+
+### Changed
+
+### Fixed
+
+- Fixed grammar mistakes.
