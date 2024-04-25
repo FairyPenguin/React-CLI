@@ -12,9 +12,8 @@ import { createSpinner } from 'nanospinner';
 import fs from "fs"
 import path from "path";
 import { fileURLToPath } from 'url';
-
+import addFramedRectangle from "./functions/createRectangleFrame.js"
 import mustache from "mustache";
-import { log } from "console";
 // <====== //
 
 // <====== 
@@ -320,11 +319,20 @@ async function createFilesAndFolders() {
         })
 
 
-    } catch (err) {
+    } catch (error) {
 
-        spinner.error({ text: "\n 🔴 Failed to create your component ❌ \n ⚠️ Check the error message below 👇" })
+        spinner.error({ text: "\n ❌ Failed to create your component ⚠️Check the error message below 👇." })
 
-        console.error("\n ❌ Creating component Failed:", err);
+        if (error.code === "EEXIST" && error.errno === -17) {
+
+            const errorMessage = chalk.redBright.bold(`    🔴Error Message: "file already exists"`)
+
+            const errorMeaning = gradient.atlas(`\n
+            Error Explanation: "The file already exists." This means the component folder or file is already existing in your file system, and you are trying to duplicate it with the same name, which causes the error.`)
+
+            console.error(addFramedRectangle(errorMessage), errorMeaning);
+        }
+
 
     }
 
@@ -341,7 +349,10 @@ async function creationStatus(func) {
     if (checkCreation) {
 
         spinner.success(chalk.bold(gradient.pastel(`
-         '🟢 Your component ${choices.componentName} files created successfully  ✅'`)))
+            '🟢 Your component ${choices.componentName} files created successfully  ✅'`)))
+
+        const dateAndTime = new Date().toUTCString()
+        console.log(dateAndTime)
 
     } else {
 
