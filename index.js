@@ -28,7 +28,7 @@ const packageJsonFile = JSON.parse(fs.readFileSync(packageJsonFilePath, "utf-8")
 
 const installedVersion = packageJsonFile.version
 
-const lastestVersion = "0.0.10"
+const lastestVersion = "0.0.8"
 
 const args = process.argv.slice(2)
 
@@ -55,7 +55,7 @@ if (args.includes("-v") || args.includes("--v") || args.includes("--version") ||
         // show a message with how to update to the latest version 
         //
         console.log(`\nYou are not using the latest version,\n
-        Please update using one of these commands\n
+        Update using one of these commands\n
         🔑 npm update -g react-outil \n
         🔑 pnpm update -g react-outil \n
         🔑 yarn update -g react-outil \n
@@ -105,10 +105,13 @@ function printUserChoices() {
 }
 
 
+const welcomeMessage = `\n Welcome,  <React Outil /> 🧪 \n  \n» A CLI Tool to Generate React Components & CSS-Modules Files From the Termianl.`
+
+
 async function welcome() {
 
-    const msg2 = chalk.cyanBright.bold("\n Welcome,  <React Outil /> 🧪 \n  \n» A CLI Tool to Generate React Components & CSS-Modules Files From the Termianl.")
-    // await wait()
+    const msg2 = chalk.cyanBright.bold(welcomeMessage)
+
 
 
     figlet.text("< React Outil / >", {
@@ -127,8 +130,29 @@ async function welcome() {
 
     console.log(msg2);
 
+    let updateStatus = ""
+
+    if (installedVersion !== lastestVersion) {
+        const updateCommandsNote = gradient.summer(`\n 
+        Use one of these commands to update:\n
+🔑 npm update -g react-outil - 🔑 pnpm update -g react-outil - 🔑 yarn update -g react-outil`)
+
+        updateStatus =
+            ` ${chalk.redBright.bold(`🔴Update to the latest version.`)} ${updateCommandsNote}`
+
+    } else {
+
+        updateStatus =
+            chalk.greenBright.bold.underline("✅You are using the latest version.")
+    }
+
+    const welcomeMessageVersionNote = `${gradient.fruit(`\n 🔵Installed-Version: ${installedVersion} ➡️ Latest-Version: ${lastestVersion}`)} ${updateStatus}\n`
+
 
     await waitingPeriod(125)
+
+    console.log(welcomeMessageVersionNote)
+
 
 }
 
