@@ -321,14 +321,16 @@ async function createFilesAndFolders() {
 
     } catch (error) {
 
-        spinner.error({ text: "\n ❌ Failed to create your component ⚠️Check the error message below 👇." })
+        spinner.error({ text: "\n ❌ Failed to create your component ⚠️Check the error message and error explanation below 👇.\n" })
 
         if (error.code === "EEXIST" && error.errno === -17) {
 
             const errorMessage = chalk.redBright.bold(`    🔴Error Message: "file already exists"`)
 
-            const errorMeaning = gradient.atlas(`\n
-            Error Explanation: "The file already exists." This means the component folder or file is already existing in your file system, and you are trying to duplicate it with the same name, which causes the error.`)
+            const errorMeaning = chalk.yellow.bold(`\n
+ℹ️Error Explanation: "The file already exists." This means the component folder or file is already 
+existing in your file system, and you are trying to duplicate it with the same name, 
+which causes the error.`)
 
             console.error(addFramedRectangle(errorMessage), errorMeaning);
         }
