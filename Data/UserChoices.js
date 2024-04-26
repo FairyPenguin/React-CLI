@@ -1,10 +1,20 @@
 let userChoices = {
-    "folderOrFile": "",
-    "nestedSubComponentsFolder": "",
-    "componentName": "",
-    "constOrFunctionKeyword": "",
-    "extention": "",
-    "cssFile": ""
+    "nextjsChoices": {
+        "nextjsRouteOrRegularRecactComponent": "",
+        "nextjsNestedComponentsFolder": "",
+        "nextjsRouteName": "",
+    },
+    "generalChocies": {
+        "constOrFunctionKeyword": "",
+        "extention": "",
+        "cssFile": ""
+    },
+    "regularComponentsChoices": {
+        "folderOrFile": "",
+        "nestedSubComponentsFolder": "",
+        "componentName": "",
+    },
+
 };
 
 

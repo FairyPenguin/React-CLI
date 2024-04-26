@@ -16,6 +16,9 @@ import cssFileQuestion from "./functions/QuestionsFunctions/CSSFileQuestion.js"
 import createFilesAndFolders from "./functions/createFilesAndFolders.js"
 import addFramedRectangle from "./functions/createRectangleFrame.js"
 import ConstOrFunctionKeywordQuestion from "./functions/QuestionsFunctions/ConstOrFunctionKeywordQuestion.js"
+import NextjsRouteQuestion from "./functions/QuestionsFunctions/NextjsRouteQuestion.js";
+import NextjsRouteNameQuestion from "./functions/QuestionsFunctions/NextjsRouteNameQuestion.js";
+import NextjsNestedComponentsFolderQuestion from "./functions/QuestionsFunctions/NextjsNestedComponentsFolderQuestion.js";
 // <====== //
 
 // <====== 
@@ -51,9 +54,6 @@ process.on('SIGINT', () => {
 });
 
 
-
-
-
 async function main() {
 
     try {
@@ -64,21 +64,37 @@ async function main() {
             process.exit(0); // Exit the program gracefully
         });
 
+
         await welcomePrompt(waitingPeriod, compareVersion)
 
-        await folderOrFileQuestion(userChoices)
+        await NextjsRouteQuestion(userChoices)
 
-        await chooseExtentionQuestion(userChoices)
+
+
+        if (userChoices.nextjsRouteOrRegularRecactComponent === "Nextjs Route") {
+
+            await NextjsRouteNameQuestion()
+
+            await NextjsNestedComponentsFolderQuestion()
+
+        }
+
+        if (userChoices.nextjsRouteOrRegularRecactComponent === "Regular React Component") {
+
+            await folderOrFileQuestion(userChoices)
+
+            await componentNameQuestion(userChoices)
+
+        }
+
+
+        // general Questions for all scenarios //
 
         await ConstOrFunctionKeywordQuestion(userChoices)
-
-        await componentNameQuestion(userChoices)
 
         await cssFileQuestion(userChoices)
 
         await createFilesAndFolders(userChoices, waitingPeriod, addFramedRectangle)
-
-        // await creationStatus(createFilesAndFolders())
 
         printUserChoices(userChoices)
 

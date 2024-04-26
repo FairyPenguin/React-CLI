@@ -39,3 +39,29 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 
 - Fixed grammar mistakes.
+
+---
+
+## [0.1.0] - 2024-04-25
+
+### Added
+
+- Question for nested sub-components folder.
+
+- Question for using Function Keyword or Const to Define the Component.
+
+- Question for creating Nextjs App-router rout page (folder/page.jsx | folder/page.tsx).
+
+### Changed
+
+-
+
+-
+
+-
+
+### Fixed
+
+- "Fix: --Warning: Detected unsettled top-level await-- with wraaping all the awaited functions in a main async function.
+
+- Fix the exit code errors with better handling
