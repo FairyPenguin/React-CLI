@@ -1,7 +1,8 @@
 import inquirer from "inquirer"
+import { UserChoicesType } from "../../Data/UserChoices.js"
 
 
-export default async function chooseExtentionQuestion(choices) {
+export default async function chooseExtentionQuestion(choices: UserChoicesType) {
 
     const question = await inquirer.prompt({
         name: "TypeScript or JavaScript Component?",
@@ -14,7 +15,7 @@ export default async function chooseExtentionQuestion(choices) {
     })
 
 
-    choices.extention = question["TypeScript or JavaScript Component?"]
+    choices.generalChocies.extention = question["TypeScript or JavaScript Component?"]
 
 
 }

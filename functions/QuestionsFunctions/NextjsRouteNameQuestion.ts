@@ -1,7 +1,8 @@
 import inquirer from "inquirer"
+import { UserChoicesType } from "../../Data/UserChoices.js";
 
 
-export default async function NextjsRouteNameQuestion(choices) {
+export default async function NextjsRouteNameQuestion(choices: UserChoicesType) {
 
     const question = await inquirer.prompt({
         name: "Nextjs Route Name",
@@ -31,6 +32,6 @@ Don't 👇
         }
     })
 
-    choices.nextjsRouteName = question["Nextjs Route Name"]
+    choices.nextjsChoices.nextjsRouteName = question["Nextjs Route Name"]
 
 }

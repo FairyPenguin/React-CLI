@@ -6,6 +6,7 @@ import { fileURLToPath } from 'url';
 import mustache from "mustache";
 import chalk from "chalk";
 import gradient from "gradient-string";
+import { UserChoicesType } from '../Data/UserChoices.js';
 
 //--------->
 
@@ -15,26 +16,70 @@ import gradient from "gradient-string";
 // const __dirname = path.dirname(__filename)
 
 
-export default async function createFilesAndFolders(choices, waitingPeriod, addFramedRectangle) {
+export default async function createFilesAndFolders(choices: UserChoicesType, waitingPeriod: (ms?: number) => Promise<unknown>, addFramedRectangle: { (text: string): string; (arg0: string): any; }) {
+
+    // React Component path 
+
+    const regularReactComponentFolderPath = path.join("./", `${choices.regularComponentsChoices.componentName}`);
+
+    // React Component file path
+
+    const reactComponentFilePath = path.join(`${regularReactComponentFolderPath}/`, `${choices.regularComponentsChoices.componentName}.${choices.generalChocies.extention}`);
 
 
-    const folderPath = path.join("./", `${choices.componentName}`);
+    // React Component  CSS file path
 
-    const componentFilePath = path.join(`${folderPath}/`, `${choices.componentName}.${choices.extention}`);
+    const reactComponentCSSFilePath = path.join(`${regularReactComponentFolderPath}/`, `${choices.regularComponentsChoices.componentName}.module.css`);
 
-    const cssFilePath = path.join(`${folderPath}/`, `${choices.componentName}.module.css`);
 
-    const templatePath = path.join("./templates", "template.txt")
+    // Nextjs route path 
+    const nextjsRouteFolderPath = path.join("./", `${choices.nextjsChoices.nextjsRouteName}`);
 
-    const template = fs.readFileSync(templatePath, 'utf8');
+    // Nextjs file path (page.jsx/page.tsx)
 
-    const data = {
-        title: choices.componentName,
-        content: `${choices.componentName} Component, Generated via React-Outil`,
-        cssFileRelativePath: `${choices.componentName}.module.css`
+    const nextjsRouteFilePath = path.join(`${nextjsRouteFolderPath}/`, `page.${choices.generalChocies.extention}`);
+
+
+    // Nextjs Route  CSS file path
+
+    const NextjsRouteCSSFilePath = path.join(`${nextjsRouteFolderPath}/`, `${choices.nextjsChoices.nextjsRouteName}.module.css`);
+
+
+    // Template files
+
+    // Function Keyword tempalte
+
+    const functionKeywordTemplatePath = path.join("./templates", "FunctionKeywordTemplate.txt")
+
+    const functionKeywordTemplate = fs.readFileSync(functionKeywordTemplatePath, 'utf8');
+
+    // Const  tempalte
+
+    const constTemplatePath = path.join("./templates", "ConstTemplate.txt")
+
+    const constTemplate = fs.readFileSync(constTemplatePath, 'utf8');
+
+
+    const reactComponentData = {
+        title: choices.regularComponentsChoices.componentName,
+        content: `${choices.regularComponentsChoices.componentName} Component, Generated via React-Outil`,
+        cssFileRelativePath: `${choices.regularComponentsChoices.componentName}.module.css`
     }
 
-    const output = mustache.render(template, data)
+    const nextjsRouteData = {
+        title: choices.nextjsChoices.nextjsRouteName,
+        content: `${choices.nextjsChoices.nextjsRouteName} Route, Generated via React-Outil`,
+        cssFileRelativePath: `${choices.nextjsChoices.nextjsRouteName}.module.css`
+    }
+
+    const reactComponentFunctionKeywordOutput = mustache.render(functionKeywordTemplate, reactComponentData)
+
+    const reactComponentConstOutput = mustache.render(constTemplate, reactComponentData)
+
+
+    const nextjsRouteFunctionKeywordOutput = mustache.render(functionKeywordTemplate, nextjsRouteData)
+
+    const nextjsRouteConstOutput = mustache.render(constTemplate, nextjsRouteData)
 
 
     const spinner = createSpinner(chalk.bgBlack.yellowBright.bold("\n No magic is happening 🔮, just a function executing code ⚙️ to generate your files and folders in the file system🚦.")).start()
@@ -44,20 +89,21 @@ export default async function createFilesAndFolders(choices, waitingPeriod, addF
 
     try {
 
-        fs.mkdirSync(folderPath);
-        fs.writeFileSync(componentFilePath, output);
-        // fs.writeFileSync(filerPath, output);
-        // console.log(fileContent);
-        if (choices.cssFile === "Yes") {
-            fs.writeFileSync(cssFilePath, "/* CSS Module */")
+        if (choices.generalChocies.nextjsRouteOrRegularRecactComponent === "Regular React Component") {
+            fs.mkdirSync(regularReactComponentFolderPath);
+            fs.writeFileSync(reactComponentFilePath, reactComponentFunctionKeywordOutput);
+            // fs.writeFileSync(filerPath, output);
+            // console.log(fileContent);
+            if (choices.generalChocies.cssFile === "Yes") {
+                fs.writeFileSync(reactComponentCSSFilePath, "/* CSS Module */")
+            }
+
+            spinner.success({
+                text: chalk.bold(gradient.pastel(`
+            '🟢 Your component ⚜️ ${choices.regularComponentsChoices.componentName} ⚜️ files created successfully  ✅'`))
+            })
+
         }
-
-
-        spinner.success({
-            text: chalk.bold(gradient.pastel(`
-        '🟢 Your component ⚜️ ${choices.componentName} ⚜️ files created successfully  ✅'`))
-        })
-
 
     } catch (error) {
 

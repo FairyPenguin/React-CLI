@@ -14,32 +14,18 @@ import cssFileQuestion from "../functions/QuestionsFunctions/CSSFileQuestion.js"
 import createFilesAndFolders from "../functions/createFilesAndFolders.js"
 import addFramedRectangle from "../functions/createRectangleFrame.js"
 import ConstOrFunctionKeywordQuestion from "../functions/QuestionsFunctions/ConstOrFunctionKeywordQuestion.js"
-import NextjsRouteQuestion from "../functions/QuestionsFunctions/NextjsRouteQuestion.js";
-import NextjsRouteNameQuestion from "../functions/QuestionsFunctions/NextjsRouteNameQuestion.js";
+import NextjsRouteQuestion from "../functions/QuestionsFunctions/NextjsRouteOrRegularReactComponentQuestion.js";
 import NextjsNestedComponentsFolderQuestion from "../functions/QuestionsFunctions/NextjsNestedComponentsFolderQuestion.js";
+import NextjsRouteOrRegularReactComponentQuestion from "../functions/QuestionsFunctions/NextjsRouteOrRegularReactComponentQuestion.js";
 // <====== //
 
-// <====== 
 
-// console.log(userChoices);
 
 // Argumentss Functions List
 
 versionArgument(compareVersion)
 
 
-// let userChoices = {
-//     "folderOrFile": "",
-//     "componentName": "",
-//     "extention": "",
-//     "cssFile": ""
-// };
-
-process.on('SIGINT', () => {
-    console.log('Caught interrupt signal (Ctrl+C). Exiting...');
-    // Perform any cleanup actions here (e.g., close file handles)
-    process.exit(0); // Exit the program gracefully
-});
 
 
 async function main() {
@@ -61,9 +47,9 @@ async function main() {
 
         if (userChoices.generalChocies.nextjsRouteOrRegularRecactComponent === "Nextjs Route") {
 
-            await NextjsRouteNameQuestion()
+            await NextjsRouteOrRegularReactComponentQuestion(userChoices)
 
-            await NextjsNestedComponentsFolderQuestion()
+            await NextjsNestedComponentsFolderQuestion(userChoices)
 
         }
 
@@ -88,7 +74,9 @@ async function main() {
         printUserChoices(userChoices)
 
     } catch (error) {
+
         console.error(error);
+
         process.exit(1);
     }
 

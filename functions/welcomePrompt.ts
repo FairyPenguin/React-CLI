@@ -8,8 +8,8 @@ import gradient from "gradient-string";
 
 // Welcome Screen function
 
-export default async function welcomePrompt(waitingPeriod,
-    compareVersion) {
+export default async function welcomePrompt(waitingPeriod: { (ms?: number): Promise<unknown>; (arg0: number): any; },
+    compareVersion: { (): Promise<void>; (): any; }) {
 
     const welcomeMessage = `\n Welcome,  <React Outil /> 🧪 \n  \n» A CLI Tool to Generate React Components & CSS-Modules Files From the Termianl.`
 

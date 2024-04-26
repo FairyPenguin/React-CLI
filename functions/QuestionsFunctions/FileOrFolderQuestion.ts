@@ -1,7 +1,8 @@
 import inquirer from "inquirer"
 import NestedSubComponentsFolderQuestion from "./NestedSub-ComponentsFolderQuestion.js"
+import { UserChoicesType } from "../../Data/UserChoices.js"
 
-export default async function folderOrFileQuestion(choices) {
+export default async function folderOrFileQuestion(choices: UserChoicesType) {
 
     try {
 
@@ -14,9 +15,9 @@ export default async function folderOrFileQuestion(choices) {
 
         })
 
-        choices.folderOrFile = question["Single Component File or Folder with component files nested"]
+        choices.regularComponentsChoices.folderOrFile = question["Single Component File or Folder with component files nested"]
 
-        if (choices.folderOrFile === "Folder/Component File 📁") {
+        if (choices.regularComponentsChoices.folderOrFile === "Folder/Component File 📁") {
             await NestedSubComponentsFolderQuestion(choices)
         }
 

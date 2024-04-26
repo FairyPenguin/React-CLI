@@ -1,6 +1,7 @@
 import inquirer from "inquirer"
+import { UserChoicesType } from "../../Data/UserChoices.js"
 
-export default async function NestedSubComponentsFolderQuestion(choices) {
+export default async function NestedSubComponentsFolderQuestion(choices: UserChoicesType) {
     const question = await inquirer.prompt({
         name: "Create a Nested Sub-Components Folder?",
         type: "list",
@@ -12,5 +13,5 @@ export default async function NestedSubComponentsFolderQuestion(choices) {
 
     })
 
-    choices.nestedSubComponentsFolder = question["Create a Nested Sub-Components Folder?"]
+    choices.regularComponentsChoices.nestedSubComponentsFolder = question["Create a Nested Sub-Components Folder?"]
 }

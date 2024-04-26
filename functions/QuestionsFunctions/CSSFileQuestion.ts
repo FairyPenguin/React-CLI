@@ -1,6 +1,7 @@
 import inquirer from "inquirer"
+import { UserChoicesType } from "../../Data/UserChoices.js"
 
-export default async function cssFileQuestion(choices) {
+export default async function cssFileQuestion(choices: UserChoicesType) {
     const question = await inquirer.prompt({
         name: "Create a CSS File?",
         type: "list",
@@ -10,5 +11,5 @@ export default async function cssFileQuestion(choices) {
         // }
     })
 
-    choices.cssFile = question["Create a CSS File?"]
+    choices.generalChocies.cssFile = question["Create a CSS File?"]
 }

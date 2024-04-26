@@ -1,6 +1,7 @@
 import inquirer from "inquirer"
+import { UserChoicesType } from "../../Data/UserChoices.js"
 
-export default async function ConstOrFunctionKeywordQuestion(choices) {
+export default async function ConstOrFunctionKeywordQuestion(choices: UserChoicesType) {
     const question = await inquirer.prompt({
         name: "Function Keyword or Const to Define the Component?",
         type: "list",
@@ -12,5 +13,5 @@ export default async function ConstOrFunctionKeywordQuestion(choices) {
 
     })
 
-    choices.constOrFunctionKeyword = question["Function Keyword or Const to Define the Component?"]
+    choices.generalChocies.constOrFunctionKeyword = question["Function Keyword or Const to Define the Component?"]
 }

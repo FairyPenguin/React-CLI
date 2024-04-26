@@ -1,7 +1,7 @@
 
 export type UserChoicesType = {
 
-    generalChocies?: {
+    generalChocies: {
         nextjsRouteOrRegularRecactComponent: string;
         constOrFunctionKeyword: string;
         extention: string;
