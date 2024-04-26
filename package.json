@@ -7,11 +7,11 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "start": "tsc --watch & nodemon ./dist/src/index.js",
+    "start": "nodemon ./dist/src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cli": "tsc & node ./dist/src/index.js"
+    "cli": "tsc && node ./dist/src/index.js"
   },
-  "bin": "./index.js",
+  "bin": "./dist/src/index.js",
   "keywords": [],
   "dependencies": {
     "@inquirer/prompts": "^4.3.2",

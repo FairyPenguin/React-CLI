@@ -22,6 +22,8 @@ export default async function createFilesAndFolders(choices: UserChoicesType, wa
 
     const regularReactComponentFolderPath = path.join("./", `${choices.regularComponentsChoices.componentName}`);
 
+    const regularReactComponentSingleFilePath = path.join("./", `${choices.regularComponentsChoices.componentName}.${choices.generalChocies.extention}`);
+
     // React Component file path
 
     const reactComponentFilePath = path.join(`${regularReactComponentFolderPath}/`, `${choices.regularComponentsChoices.componentName}.${choices.generalChocies.extention}`);
@@ -30,6 +32,9 @@ export default async function createFilesAndFolders(choices: UserChoicesType, wa
     // React Component  CSS file path
 
     const reactComponentCSSFilePath = path.join(`${regularReactComponentFolderPath}/`, `${choices.regularComponentsChoices.componentName}.module.css`);
+
+    const reactComponentSingleFileCSSFilePath = path.join("./", `${choices.regularComponentsChoices.componentName}.module.css`);
+
 
 
     // Nextjs route path 
@@ -90,13 +95,35 @@ export default async function createFilesAndFolders(choices: UserChoicesType, wa
     try {
 
         if (choices.generalChocies.nextjsRouteOrRegularRecactComponent === "Regular React Component") {
-            fs.mkdirSync(regularReactComponentFolderPath);
-            fs.writeFileSync(reactComponentFilePath, reactComponentFunctionKeywordOutput);
-            // fs.writeFileSync(filerPath, output);
-            // console.log(fileContent);
-            if (choices.generalChocies.cssFile === "Yes") {
-                fs.writeFileSync(reactComponentCSSFilePath, "/* CSS Module */")
+
+            if (choices.regularComponentsChoices.folderOrFile === "Single Component File 📄") {
+
+                fs.writeFileSync(regularReactComponentSingleFilePath, reactComponentFunctionKeywordOutput);
+
+                fs.writeFileSync(reactComponentSingleFileCSSFilePath, "/* CSS Module */")
             }
+
+
+            if (choices.regularComponentsChoices.folderOrFile === "Folder/Component File 📁") {
+
+                fs.mkdirSync(regularReactComponentFolderPath);
+                fs.writeFileSync(reactComponentFilePath, reactComponentFunctionKeywordOutput);
+
+                if (choices.regularComponentsChoices.nestedSubComponentsFolder === "Yes") {
+
+                    const regularNestedReactComponentFolderPath = path.join(`${regularReactComponentFolderPath}/`, `${choices.regularComponentsChoices.componentName}Components`);
+
+                    fs.mkdirSync(regularNestedReactComponentFolderPath)
+                }
+
+                if (choices.generalChocies.cssFile === "Yes") {
+                    fs.writeFileSync(reactComponentCSSFilePath, "/* CSS Module */")
+                }
+            }
+
+
+
+
 
             spinner.success({
                 text: chalk.bold(gradient.pastel(`
@@ -119,6 +146,9 @@ existing in your file system, and you are trying to duplicate it with the same n
 which causes the error.`)
 
             console.error(addFramedRectangle(errorMessage), errorMeaning);
+        } else {
+            console.error(error)
+
         }
 
 

@@ -6,7 +6,7 @@ export default async function NextjsRouteOrRegularReactComponentQuestion(choices
         name: "Create Nextjs Route or Regular React Component?",
         type: "list",
         choices: ["Regular React Component", "Nextjs Route"],
-        prefix: "This choice will create a Nextjs App-router Route(folder contains page.jsx or page.tsx Or a Regular React Component). \n",
+        prefix: "This choice will create a Regular React Component or Nextjs App-router Route(folder contains page.jsx/page.tsx).",
 
     })
 
