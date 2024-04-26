@@ -10,9 +10,9 @@ import gradient from "gradient-string";
 //--------->
 
 
-const __filename = fileURLToPath(import.meta.url)
+// const __filename = fileURLToPath(import.meta.url)
 
-const __dirname = path.dirname(__filename)
+// const __dirname = path.dirname(__filename)
 
 
 export default async function createFilesAndFolders(choices, waitingPeriod, addFramedRectangle) {
@@ -68,7 +68,7 @@ export default async function createFilesAndFolders(choices, waitingPeriod, addF
             const errorMessage = chalk.redBright.bold(`    🔴Error Message: "file already exists"`)
 
             const errorMeaning = chalk.yellow.bold(`\n
-ℹ️Error Explanation: "The file already exists." This means the component folder or file is already 
+ℹ️Error Explanation:  "The file already exists": → This means the component folder or file is already 
 existing in your file system, and you are trying to duplicate it with the same name, 
 which causes the error.`)
 

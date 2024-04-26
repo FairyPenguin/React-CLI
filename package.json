@@ -1,7 +1,7 @@
 {
   "name": "react-outil",
   "private": false,
-  "version": "0.0.11",
+  "version": "0.1.0",
   "description": "A CLI tool to generate React components (folders and files) & CSS-Modules files from the terminal that support typescript.",
   "main": "index.js",
   "type": "module",
@@ -17,6 +17,7 @@
     "@inquirer/prompts": "^4.3.2",
     "chalk": "^5.3.0",
     "chalk-animation": "^2.0.3",
+    "esm": "^3.2.25",
     "figlet": "^1.7.0",
     "gradient-string": "^2.0.2",
     "inquirer": "^9.2.17",

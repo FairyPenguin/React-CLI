@@ -13,10 +13,9 @@ import folderOrFileQuestion from "./functions/QuestionsFunctions/FileOrFolderQue
 import chooseExtentionQuestion from "./functions/QuestionsFunctions/ExtentionQuestion.js"
 import componentNameQuestion from "./functions/QuestionsFunctions/ComponentNameQuestion.js"
 import cssFileQuestion from "./functions/QuestionsFunctions/CSSFileQuestion.js"
-import creationStatus from "./functions/creationStatus.js"
 import createFilesAndFolders from "./functions/createFilesAndFolders.js"
 import addFramedRectangle from "./functions/createRectangleFrame.js"
-
+import ConstOrFunctionKeywordQuestion from "./functions/QuestionsFunctions/ConstOrFunctionKeywordQuestion.js"
 // <====== //
 
 // <====== 
@@ -45,26 +44,50 @@ async function askForNextjsRoute() {
 //     "cssFile": ""
 // };
 
+process.on('SIGINT', () => {
+    console.log('Caught interrupt signal (Ctrl+C). Exiting...');
+    // Perform any cleanup actions here (e.g., close file handles)
+    process.exit(0); // Exit the program gracefully
+});
 
 
 
 
 
-await welcomePrompt(waitingPeriod, compareVersion)
+async function main() {
 
-await folderOrFileQuestion(userChoices)
+    try {
 
-await chooseExtentionQuestion(userChoices)
+        process.on('SIGINT', () => {
+            console.log('Caught interrupt signal (Ctrl+C). Exiting...');
+            // Perform any cleanup actions here (e.g., close file handles)
+            process.exit(0); // Exit the program gracefully
+        });
 
-await componentNameQuestion(userChoices)
+        await welcomePrompt(waitingPeriod, compareVersion)
 
-await cssFileQuestion(userChoices)
+        await folderOrFileQuestion(userChoices)
 
-await createFilesAndFolders(userChoices, waitingPeriod, addFramedRectangle)
+        await chooseExtentionQuestion(userChoices)
 
-// await creationStatus(createFilesAndFolders())
+        await ConstOrFunctionKeywordQuestion(userChoices)
 
-printUserChoices(userChoices)
+        await componentNameQuestion(userChoices)
 
+        await cssFileQuestion(userChoices)
 
+        await createFilesAndFolders(userChoices, waitingPeriod, addFramedRectangle)
+
+        // await creationStatus(createFilesAndFolders())
+
+        printUserChoices(userChoices)
+
+    } catch (error) {
+        console.error(error);
+        process.exit(1);
+    }
+
+}
+
+main()
 

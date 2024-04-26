@@ -1,0 +1,22 @@
+// ======/ Imports /====== 
+
+// CSS-Module File Import
+import styles  from "./{{cssFileRelativePath}}";
+
+// Main Component Exported Function
+
+const {{title}} = () => {
+
+    return (
+
+        <>
+            <h1>{{content}}</h1>
+        </>
+
+    )
+
+}
+
+export default Component
+
+
