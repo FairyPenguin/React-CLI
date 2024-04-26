@@ -1,4 +1,5 @@
 import chalk from "chalk";
+import { UserChoicesType } from "../Data/UserChoices.js";
 
 const userChoices = {
 
@@ -18,7 +19,7 @@ const printedUserChoicesArray = [
 ]
 
 
-export default function printUserChoices(choices) {
+export default function printUserChoices(choices: UserChoicesType) {
 
     const choicesMessage = chalk.whiteBright.bgCyanBright.bold("\n Your choices:")
 

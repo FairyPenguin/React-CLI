@@ -30,6 +30,6 @@ Don't 👇
         }
     })
 
-    choices.componentName = question["Component Name"]
+    choices = question["Component Name"]
 
 }

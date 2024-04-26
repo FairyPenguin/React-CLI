@@ -1,6 +1,6 @@
 //
 
-export default async function versionArgument(compareVersion) {
+export default async function versionArgument(compareVersion: () => any) {
 
     const args = process.argv.slice(2)
 
