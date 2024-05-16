@@ -36,20 +36,6 @@ export default async function createFilesAndFolders(choices: UserChoicesType, wa
     const reactComponentSingleFileCSSFilePath = path.join("./", `${choices.regularComponentsChoices.componentName}.module.css`);
 
 
-
-    // Nextjs route path 
-    const nextjsRouteFolderPath = path.join("./", `${choices.nextjsChoices.nextjsRouteName}`);
-
-    // Nextjs file path (page.jsx/page.tsx)
-
-    const nextjsRouteFilePath = path.join(`${nextjsRouteFolderPath}/`, `page.${choices.generalChocies.extention}`);
-
-
-    // Nextjs Route  CSS file path
-
-    const NextjsRouteCSSFilePath = path.join(`${nextjsRouteFolderPath}/`, `${choices.nextjsChoices.nextjsRouteName}.module.css`);
-
-
     // Template files
 
     // Function Keyword tempalte
@@ -71,20 +57,12 @@ export default async function createFilesAndFolders(choices: UserChoicesType, wa
         cssFileRelativePath: `${choices.regularComponentsChoices.componentName}.module.css`
     }
 
-    const nextjsRouteData = {
-        title: choices.nextjsChoices.nextjsRouteName,
-        content: `${choices.nextjsChoices.nextjsRouteName} Route, Generated via React-Outil`,
-        cssFileRelativePath: `${choices.nextjsChoices.nextjsRouteName}.module.css`
-    }
+
 
     const reactComponentFunctionKeywordOutput = mustache.render(functionKeywordTemplate, reactComponentData)
 
     const reactComponentConstOutput = mustache.render(constTemplate, reactComponentData)
 
-
-    const nextjsRouteFunctionKeywordOutput = mustache.render(functionKeywordTemplate, nextjsRouteData)
-
-    const nextjsRouteConstOutput = mustache.render(constTemplate, nextjsRouteData)
 
 
     const spinner = createSpinner(chalk.bgBlack.yellowBright.bold("\n No magic is happening 🔮, just a function executing code ⚙️ to generate your files and folders in the file system🚦.")).start()

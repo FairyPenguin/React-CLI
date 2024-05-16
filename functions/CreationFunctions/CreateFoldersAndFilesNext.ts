@@ -98,7 +98,7 @@ export default async function createFilesAndFoldersForNextjs(choices: UserChoice
 
                 spinner.success({
                     text: chalk.bold(gradient.pastel(`\n
-'🟢 Your nextjs route ⚜️ ${choices.nextjsChoices.nextjsRouteName} ⚜️ files created successfully  ✅'`))
+                '🟢 Your nextjs route ⚜️ ${choices.nextjsChoices.nextjsRouteName} ⚜️ files created successfully  ✅'`))
                 })
 
             }

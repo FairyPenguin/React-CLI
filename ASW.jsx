@@ -1,16 +1,16 @@
 // ======/ Imports /====== 
 
 // CSS-Module File Import
-import styles  from "./15.module.css";
+import styles  from "./ASW.module.css";
 
 // Main Component Exported Function
 
-export default function 15() {
+export default function ASW() {
 
     return (
 
         <>
-            <h1>15 Component, Generated via React-Outil</h1>
+            <h1>ASW Component, Generated via React-Outil</h1>
         </>
 
     )

@@ -1,16 +1,16 @@
 // ======/ Imports /====== 
 
 // CSS-Module File Import
-import styles  from "./01.module.css";
+import styles  from "./ASL.module.css";
 
 // Main Component Exported Function
 
-export default function 01() {
+export default function ASL() {
 
     return (
 
         <>
-            <h1>01 Component, Generated via React-Outil</h1>
+            <h1>ASL Route, Generated via React-Outil</h1>
         </>
 
     )

@@ -9,7 +9,6 @@ export default function printUserChoices(choices: UserChoicesType) {
     const printedUserChoices = {
 
         // General choices 
-
         "generalChoices": {
             "✳️JavaScript or TypeScript Component?:": `${choices.generalChocies.extention}`,
             "✳️Function Keyword or Const to Define the Component?:": `${choices.generalChocies.constOrFunctionKeyword}`,
@@ -17,7 +16,6 @@ export default function printUserChoices(choices: UserChoicesType) {
         },
 
         // React choices 
-
         "reactComponentChoices": {
             "✳️Single Component File or Folder with component files nested?:": ` ${choices.regularComponentsChoices.folderOrFile}`,
             "✳️Nested Sub-Components Folder?:": ` ${choices.regularComponentsChoices.nestedSubComponentsFolder}`,
@@ -25,23 +23,41 @@ export default function printUserChoices(choices: UserChoicesType) {
         },
 
         // Nextjs choices 
-
+        "nextjsRouteChoices": {
+            "✳️Nextjs Route Name?:": ` ${choices.nextjsChoices.nextjsRouteName}`,
+            "✳️Create a Nested Components Folder For the Route?:": ` ${choices.nextjsChoices.nextjsNestedComponentsFolder}`
+        },
     }
 
     // Choices Array
     let choicesToBePrinted = []
 
+    // General Choices
+    const printedGeneralChoices = printedUserChoices.generalChoices
+
+
     if (choices.generalChocies.nextjsRouteOrRegularRecactComponent === "Nextjs Route") {
 
-        const userChoices = `
+        const printedNextjsRouteChoices = printedUserChoices.nextjsRouteChoices
 
-        ✳️Nextjs Route Name: ${choices.nextjsChoices.nextjsRouteName}
-        ✳️Create a Nested Components Folder For the Route?: ${choices.nextjsChoices.nextjsNestedComponentsFolder}
-        ✳️JavaScript or TypeScript Component?: ${choices.generalChocies.extention}
-        ✳️Function Keyword or Const to Define the Component?: ${choices.generalChocies.constOrFunctionKeyword}
-        ✳️Create CSS File?: ${choices.generalChocies.cssFile}
-        `
-        console.log(`${choicesMessage}\n ${userChoices}`);
+
+        for (const choice in printedNextjsRouteChoices) {
+
+            choicesToBePrinted.push(`${choice} ${chalk.yellow.bold.italic(`${printedNextjsRouteChoices[choice]}`)}`)
+
+        }
+
+        for (const choice in printedGeneralChoices) {
+
+            choicesToBePrinted.push(`${choice} ${chalk.yellow.bold.italic(`${printedGeneralChoices[choice]}`)}`)
+        }
+
+        const formatted = choicesToBePrinted.map((choice) => {
+            return `\n    ${choice}`
+        })
+
+        console.log(`${choicesMessage}\n ${formatted}`);
+
 
     }
 
@@ -50,7 +66,6 @@ export default function printUserChoices(choices: UserChoicesType) {
 
         const printedReactComponentChoices = printedUserChoices.reactComponentChoices
 
-        const printedGeneralChoices = printedUserChoices.generalChoices
 
 
         for (const choice in printedReactComponentChoices) {
@@ -65,7 +80,7 @@ export default function printUserChoices(choices: UserChoicesType) {
         }
 
         const formatted = choicesToBePrinted.map((choice) => {
-            return `\n${choice}`
+            return `\n    ${choice}`
         })
 
         console.log(`${choicesMessage}\n ${formatted}`);
