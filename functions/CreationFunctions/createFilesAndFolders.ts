@@ -19,6 +19,7 @@ const __dirname = path.dirname(__filename)
 export default async function createFilesAndFolders(choices: UserChoicesType, waitingPeriod: (ms?: number) => Promise<unknown>, addFramedRectangle: { (text: string): string; (arg0: string): any; }) {
 
 
+
     const spinner = createSpinner(chalk.bgBlack.yellowBright.bold("\n No magic is happening 🔮, just a function executing code ⚙️ to generate your files and folders in the file system🚦.")).start()
 
     await waitingPeriod()
@@ -55,7 +56,7 @@ export default async function createFilesAndFolders(choices: UserChoicesType, wa
 
             // Const  tempalte
 
-            const constTemplatePath = path.join("./templates", "ConstTemplate.txt")
+            const constTemplatePath = path.join(__dirname, "../../../templates/ConstTemplate.txt")
 
             const constTemplate = fs.readFileSync(constTemplatePath, 'utf8');
 

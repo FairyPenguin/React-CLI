@@ -65,7 +65,8 @@ export default async function createFilesAndFoldersForNextjs(choices: UserChoice
 
                 // Const  tempalte
 
-                const constTemplatePath = path.join("./templates", "ConstTemplate.txt")
+                const constTemplatePath = path.join(__dirname, "../../../templates/ConstTemplate.txt")
+
 
                 const constTemplate = fs.readFileSync(constTemplatePath, 'utf8');
 
