@@ -40,7 +40,7 @@ export default async function createFilesAndFolders(choices: UserChoicesType, wa
 
     // Function Keyword tempalte
 
-    const functionKeywordTemplatePath = path.join("./templates", "FunctionKeywordTemplate.txt")
+    const functionKeywordTemplatePath = path.join("./", "templates/FunctionKeywordTemplate.txt")
 
     const functionKeywordTemplate = fs.readFileSync(functionKeywordTemplatePath, 'utf8');
 

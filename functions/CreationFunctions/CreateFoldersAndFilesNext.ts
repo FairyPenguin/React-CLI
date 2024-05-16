@@ -59,7 +59,7 @@ export default async function createFilesAndFoldersForNextjs(choices: UserChoice
 
                 // Function Keyword tempalte
 
-                const functionKeywordTemplatePath = path.join("./templates", "FunctionKeywordTemplate.txt")
+                const functionKeywordTemplatePath = path.join("./", "templates/FunctionKeywordTemplate.txt")
 
                 const functionKeywordTemplate = fs.readFileSync(functionKeywordTemplatePath, 'utf8');
 

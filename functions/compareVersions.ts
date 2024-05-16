@@ -9,12 +9,12 @@ import figlet from "figlet";
 import gradient from "gradient-string";
 //--------->
 
-// const __filename = fileURLToPath(import.meta.url)
+const __filename = fileURLToPath(import.meta.url)
 
-// const __dirname = path.dirname(__filename)
+const __dirname = path.dirname(__filename)
 
 // get the package.josn file path
-const packageJsonFilePath = path.join("./", "package.json")
+const packageJsonFilePath = path.join(__dirname, "../../package.json")
 
 // Read the package.josn file
 const packageJsonFile = JSON.parse(fs.readFileSync(packageJsonFilePath, "utf-8"))
