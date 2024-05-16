@@ -42,26 +42,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
-## [0.1.0] - 2024-04-25
+## [0.0.12] - 2024-05-17
 
 ### Added
 
-- Question for nested sub-components folder.
-
-- Question for using Function Keyword or Const to Define the Component.
-
-- Question for creating Nextjs App-router rout page (folder/page.jsx | folder/page.tsx).
+- Support for Nextjs route creation works 100% now.
 
 ### Changed
 
--
+- The printed user choices styles.
 
--
+- Packgaes updates:
 
--
+  > inquirer 9.2.21 | @inquirer/prompts 4.3.3 | @types/node 20.12.12 | tsx 4.10.3
+
+- Orgnized the project folders/files structure
 
 ### Fixed
 
-- "Fix: --Warning: Detected unsettled top-level await-- with wraaping all the awaited functions in a main async function.
-
-- Fix the exit code errors with better handling
+- "Fix: some user answers not shown in the pinted user choices"
