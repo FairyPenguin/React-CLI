@@ -6,6 +6,28 @@ export default function printUserChoices(choices: UserChoicesType) {
 
     const choicesMessage = chalk.whiteBright.bgCyanBright.bold("\n Your choices:")
 
+    const printedUserChoices = {
+
+        // General choices 
+
+        "generalChoices": {
+            "✳️JavaScript or TypeScript Component?:": `${choices.generalChocies.extention}`,
+            "✳️Function Keyword or Const to Define the Component?:": `${choices.generalChocies.constOrFunctionKeyword}`,
+            "✳️Create CSS File?:": `${choices.generalChocies.cssFile}`,
+        },
+
+        // React choices 
+
+        "reactComponentChoices": {
+            "✳️Single Component File or Folder with component files nested?:": ` ${choices.regularComponentsChoices.folderOrFile}`,
+            "✳️Nested Sub-Components Folder?:": ` ${choices.regularComponentsChoices.nestedSubComponentsFolder}`,
+            "✳️Component Name?:": ` ${choices.regularComponentsChoices.componentName}`,
+        },
+
+        // Nextjs choices 
+
+    }
+
     if (choices.generalChocies.nextjsRouteOrRegularRecactComponent === "Nextjs Route") {
 
         const userChoices = `
@@ -19,11 +41,28 @@ export default function printUserChoices(choices: UserChoicesType) {
 
     if (choices.generalChocies.nextjsRouteOrRegularRecactComponent === "Regular React Component") {
 
-        const userChoices = `        
-        ✳️Single Component File or Folder with component files nested?: ${choices.regularComponentsChoices.folderOrFile}
-        ✳️Nested Sub-Components Folder?: ${choices.regularComponentsChoices.nestedSubComponentsFolder}
-        ✳️Component Name?: ${choices.regularComponentsChoices.componentName}
-` }
+        // const userChoices = `        
+        // ✳️Single Component File or Folder with component files nested?: ${choices.regularComponentsChoices.folderOrFile}
+        // ✳️Nested Sub-Components Folder?: ${choices.regularComponentsChoices.nestedSubComponentsFolder}
+        // ✳️Component Name?: ${choices.regularComponentsChoices.componentName}`
+
+        const printedReactComponentChoices = printedUserChoices.reactComponentChoices
+
+        for (const choice in printedReactComponentChoices) {
+
+            const formattedUserChoices = `
+                ${choice}${printedReactComponentChoices[choice]}`
+
+            console.log(formattedUserChoices);
+
+        }
+
+        // console.log(`${choicesMessage}\n ${userChoices}`);
+    }
+
+
+
+
 }
 
 

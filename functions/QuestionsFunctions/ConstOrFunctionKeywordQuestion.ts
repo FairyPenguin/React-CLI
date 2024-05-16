@@ -6,7 +6,7 @@ export default async function ConstOrFunctionKeywordQuestion(choices: UserChoice
         name: "Function Keyword or Const to Define the Component?",
         type: "list",
         choices: ["Function Keyword", "Const"],
-        prefix: "Function Keyword(Function Component()) or Const(const Component = ()=>) component \n",
+        // prefix: "Function Keyword(Function Component()) or Const(const Component = ()=>) component \n",
         default() {
             return "Function Keyword(Function Component()"
         }

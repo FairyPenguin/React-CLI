@@ -121,10 +121,6 @@ export default async function createFilesAndFolders(choices: UserChoicesType, wa
                 }
             }
 
-
-
-
-
             spinner.success({
                 text: chalk.bold(gradient.pastel(`
             '🟢 Your component ⚜️ ${choices.regularComponentsChoices.componentName} ⚜️ files created successfully  ✅'`))

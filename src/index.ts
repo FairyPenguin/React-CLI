@@ -17,13 +17,15 @@ import ConstOrFunctionKeywordQuestion from "../functions/QuestionsFunctions/Cons
 import NextjsRouteQuestion from "../functions/QuestionsFunctions/NextjsRouteOrRegularReactComponentQuestion.js";
 import NextjsNestedComponentsFolderQuestion from "../functions/QuestionsFunctions/NextjsNestedComponentsFolderQuestion.js";
 import NextjsRouteOrRegularReactComponentQuestion from "../functions/QuestionsFunctions/NextjsRouteOrRegularReactComponentQuestion.js";
+import createFilesAndFoldersForNextjs from "../functions/QuestionsFunctions/CreationFunctions/CreateFoldersAndFilesNext.js"
+import NextjsRouteNameQuestion from "../functions/QuestionsFunctions/NextjsRouteNameQuestion.js"
 // <====== //
 
 
 
 // Argumentss Functions List
 
-versionArgument(compareVersion)
+await versionArgument(compareVersion)
 
 
 
@@ -47,16 +49,16 @@ async function main() {
 
         if (userChoices.generalChocies.nextjsRouteOrRegularRecactComponent === "Nextjs Route") {
 
-            await NextjsRouteOrRegularReactComponentQuestion(userChoices)
+            await NextjsRouteNameQuestion(userChoices)
 
             await NextjsNestedComponentsFolderQuestion(userChoices)
-
         }
 
         if (userChoices.generalChocies.nextjsRouteOrRegularRecactComponent === "Regular React Component") {
 
+            //single file or folder with file nested
             await folderOrFileQuestion(userChoices)
-
+            //component name 
             await componentNameQuestion(userChoices)
 
         }
@@ -69,7 +71,18 @@ async function main() {
 
         await cssFileQuestion(userChoices)
 
-        await createFilesAndFolders(userChoices, waitingPeriod, addFramedRectangle)
+        // React
+        if (userChoices.generalChocies.nextjsRouteOrRegularRecactComponent === "Regular React Component") {
+            await createFilesAndFolders(userChoices, waitingPeriod, addFramedRectangle)
+        }
+
+        // Next
+        if (userChoices.generalChocies.nextjsRouteOrRegularRecactComponent === "Nextjs Route") {
+
+            await createFilesAndFoldersForNextjs(userChoices, waitingPeriod, addFramedRectangle)
+
+        }
+
 
         printUserChoices(userChoices)
 

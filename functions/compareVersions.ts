@@ -22,7 +22,7 @@ const packageJsonFile = JSON.parse(fs.readFileSync(packageJsonFilePath, "utf-8")
 const installedVersion = packageJsonFile.version
 
 
-async function latestVersionFetcher() {
+async function latestVersionFetcher(): Promise<string> {
 
     const packageLatestVersionURL = "https://registry.npmjs.org/react-outil/latest"
 
@@ -33,7 +33,7 @@ async function latestVersionFetcher() {
 
         const versionData = await response.json()
 
-        const latestVersion = versionData.version
+        const latestVersion: string = versionData.version
 
 
         return latestVersion

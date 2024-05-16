@@ -32,6 +32,8 @@ Don't 👇
         }
     })
 
-    choices.nextjsChoices.nextjsRouteName = question["Nextjs Route Name"]
+    if (choices.nextjsChoices) {
+        choices.nextjsChoices.nextjsRouteName = question["Nextjs Route Name"]
 
+    }
 }
