@@ -11,9 +11,9 @@ import { UserChoicesType } from '../../Data/UserChoices.js';
 //--------->
 
 
-// const __filename = fileURLToPath(import.meta.url)
+const __filename = fileURLToPath(import.meta.url)
 
-// const __dirname = path.dirname(__filename)
+const __dirname = path.dirname(__filename)
 
 
 export default async function createFilesAndFoldersForNextjs(choices: UserChoicesType, waitingPeriod: (ms?: number) => Promise<unknown>, addFramedRectangle: { (text: string): string; (arg0: string): any; }) {
@@ -59,7 +59,7 @@ export default async function createFilesAndFoldersForNextjs(choices: UserChoice
 
                 // Function Keyword tempalte
 
-                const functionKeywordTemplatePath = path.join("./", "templates/FunctionKeywordTemplate.txt")
+                const functionKeywordTemplatePath = path.join(__dirname, "../../../templates/FunctionKeywordTemplate.txt")
 
                 const functionKeywordTemplate = fs.readFileSync(functionKeywordTemplatePath, 'utf8');
 

@@ -11,7 +11,7 @@ import folderOrFileQuestion from "../functions/QuestionsFunctions/FileOrFolderQu
 import chooseExtentionQuestion from "../functions/QuestionsFunctions/ExtentionQuestion.js"
 import componentNameQuestion from "../functions/QuestionsFunctions/ComponentNameQuestion.js"
 import cssFileQuestion from "../functions/QuestionsFunctions/CSSFileQuestion.js"
-import createFilesAndFolders from "../functions/createFilesAndFolders.js"
+import createFilesAndFolders from "../functions/CreationFunctions/createFilesAndFolders.js"
 import addFramedRectangle from "../functions/createRectangleFrame.js"
 import ConstOrFunctionKeywordQuestion from "../functions/QuestionsFunctions/ConstOrFunctionKeywordQuestion.js"
 import NextjsRouteQuestion from "../functions/QuestionsFunctions/NextjsRouteOrRegularReactComponentQuestion.js";
