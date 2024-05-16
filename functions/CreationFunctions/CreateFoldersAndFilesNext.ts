@@ -65,15 +65,15 @@ export default async function createFilesAndFoldersForNextjs(choices: UserChoice
 
                 // Const  tempalte
 
-                const constTemplatePath = path.join(__dirname, "../../../templates/ConstTemplate.txt")
+                // const constTemplatePath = path.join(__dirname, "../../../templates/ConstTemplate.txt")
 
 
-                const constTemplate = fs.readFileSync(constTemplatePath, 'utf8');
+                // const constTemplate = fs.readFileSync(constTemplatePath, 'utf8');
 
 
                 const nextjsRouteFunctionKeywordOutput = mustache.render(functionKeywordTemplate, nextjsRouteData)
 
-                const nextjsRouteConstOutput = mustache.render(constTemplate, nextjsRouteData)
+                // const nextjsRouteConstOutput = mustache.render(constTemplate, nextjsRouteData)
 
                 // Files & Folders Creation steps
 

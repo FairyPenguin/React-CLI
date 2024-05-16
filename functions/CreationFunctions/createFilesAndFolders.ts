@@ -56,9 +56,9 @@ export default async function createFilesAndFolders(choices: UserChoicesType, wa
 
             // Const  tempalte
 
-            const constTemplatePath = path.join(__dirname, "../../../templates/ConstTemplate.txt")
+            // const constTemplatePath = path.join(__dirname, "../../../templates/ConstTemplate.txt")
 
-            const constTemplate = fs.readFileSync(constTemplatePath, 'utf8');
+            // const constTemplate = fs.readFileSync(constTemplatePath, 'utf8');
 
 
             const reactComponentData = {
@@ -71,7 +71,7 @@ export default async function createFilesAndFolders(choices: UserChoicesType, wa
 
             const reactComponentFunctionKeywordOutput = mustache.render(functionKeywordTemplate, reactComponentData)
 
-            const reactComponentConstOutput = mustache.render(constTemplate, reactComponentData)
+            // const reactComponentConstOutput = mustache.render(constTemplate, reactComponentData)
 
             if (choices.generalChocies.nextjsRouteOrRegularRecactComponent === "Regular React Component") {
 

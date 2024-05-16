@@ -99,3 +99,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 
 - "Fix: Templates Paths Errors"
+
+---
+
+## [0.0.14] - 2024-05-18
+
+### Added
+
+-
+
+### Changed
+
+-
+
+### Fixed
+
+- "Fix: Templates Paths Errors again"
