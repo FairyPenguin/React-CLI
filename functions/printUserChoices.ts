@@ -28,9 +28,15 @@ export default function printUserChoices(choices: UserChoicesType) {
 
     }
 
+    // Choices Array
+    let choicesToBePrinted = []
+
     if (choices.generalChocies.nextjsRouteOrRegularRecactComponent === "Nextjs Route") {
 
         const userChoices = `
+
+        ✳️Nextjs Route Name: ${choices.nextjsChoices.nextjsRouteName}
+        ✳️Create a Nested Components Folder For the Route?: ${choices.nextjsChoices.nextjsNestedComponentsFolder}
         ✳️JavaScript or TypeScript Component?: ${choices.generalChocies.extention}
         ✳️Function Keyword or Const to Define the Component?: ${choices.generalChocies.constOrFunctionKeyword}
         ✳️Create CSS File?: ${choices.generalChocies.cssFile}
@@ -41,23 +47,30 @@ export default function printUserChoices(choices: UserChoicesType) {
 
     if (choices.generalChocies.nextjsRouteOrRegularRecactComponent === "Regular React Component") {
 
-        // const userChoices = `        
-        // ✳️Single Component File or Folder with component files nested?: ${choices.regularComponentsChoices.folderOrFile}
-        // ✳️Nested Sub-Components Folder?: ${choices.regularComponentsChoices.nestedSubComponentsFolder}
-        // ✳️Component Name?: ${choices.regularComponentsChoices.componentName}`
 
         const printedReactComponentChoices = printedUserChoices.reactComponentChoices
 
+        const printedGeneralChoices = printedUserChoices.generalChoices
+
+
         for (const choice in printedReactComponentChoices) {
 
-            const formattedUserChoices = `
-                ${choice}${printedReactComponentChoices[choice]}`
-
-            console.log(formattedUserChoices);
+            choicesToBePrinted.push(`${choice} ${chalk.yellow.bold.italic(`${printedReactComponentChoices[choice]}`)}`)
 
         }
 
-        // console.log(`${choicesMessage}\n ${userChoices}`);
+        for (const choice in printedGeneralChoices) {
+
+            choicesToBePrinted.push(`${choice} ${chalk.yellow.bold.italic(`${printedGeneralChoices[choice]}`)}`)
+        }
+
+        const formatted = choicesToBePrinted.map((choice) => {
+            return `\n${choice}`
+        })
+
+        console.log(`${choicesMessage}\n ${formatted}`);
+
+
     }
 
 

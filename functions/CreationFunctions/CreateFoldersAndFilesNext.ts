@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 import mustache from "mustache";
 import chalk from "chalk";
 import gradient from "gradient-string";
-import { UserChoicesType } from '../../../Data/UserChoices.js';
+import { UserChoicesType } from '../../Data/UserChoices.js';
 
 //--------->
 
@@ -97,8 +97,8 @@ export default async function createFilesAndFoldersForNextjs(choices: UserChoice
                 }
 
                 spinner.success({
-                    text: chalk.bold(gradient.pastel(`
-'🟢 Your route ⚜️ ${choices.nextjsChoices.nextjsRouteName} ⚜️ files created successfully  ✅'`))
+                    text: chalk.bold(gradient.pastel(`\n
+'🟢 Your nextjs route ⚜️ ${choices.nextjsChoices.nextjsRouteName} ⚜️ files created successfully  ✅'`))
                 })
 
             }

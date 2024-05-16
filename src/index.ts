@@ -16,8 +16,7 @@ import addFramedRectangle from "../functions/createRectangleFrame.js"
 import ConstOrFunctionKeywordQuestion from "../functions/QuestionsFunctions/ConstOrFunctionKeywordQuestion.js"
 import NextjsRouteQuestion from "../functions/QuestionsFunctions/NextjsRouteOrRegularReactComponentQuestion.js";
 import NextjsNestedComponentsFolderQuestion from "../functions/QuestionsFunctions/NextjsNestedComponentsFolderQuestion.js";
-import NextjsRouteOrRegularReactComponentQuestion from "../functions/QuestionsFunctions/NextjsRouteOrRegularReactComponentQuestion.js";
-import createFilesAndFoldersForNextjs from "../functions/QuestionsFunctions/CreationFunctions/CreateFoldersAndFilesNext.js"
+import createFilesAndFoldersForNextjs from "../functions/CreationFunctions/CreateFoldersAndFilesNext.js"
 import NextjsRouteNameQuestion from "../functions/QuestionsFunctions/NextjsRouteNameQuestion.js"
 // <====== //
 
