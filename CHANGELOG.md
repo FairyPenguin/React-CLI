@@ -61,3 +61,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 
 - "Fix: some user answers not shown in the pinted user choices"
+
+- "Fix: gradinet-string package version issue in package.json file from gradient-string[1;5H] to be gradient-string ^2.0.2"
