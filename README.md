@@ -1,2 +1,2 @@
-<img src="/images/react-outil-Logo-DarkBackground.png" width="300" height="200">
+<img src="/images/react-outil-Logo-DarkBackground.png" width="500" height="500">
 
