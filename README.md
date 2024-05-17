@@ -1,1 +1,1 @@
-[![React-Outil Logo](/images/react-outil Logo - Dark Background.png)]
+![React-Outil Logo](/images/react-outil Logo - Dark Background.png)
