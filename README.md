@@ -1,5 +1,2 @@
-![React-Outil Logo](/images/react-outil-Logo-DarkBackground.png)
+<img src="/images/react-outil-Logo-DarkBackground.png" width="300" height="200">
 
-
-
-[![An old rock in the desert](/images/react-outil-Logo-DarkBackground.png "Shiprock, New Mexico by Beau Rogers")]
