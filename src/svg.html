@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Load SVG file file Inline</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body style="padding: 0px; font-family: arial">
+    <center>
+      <h4>Load SVG file Inline</h4>
+      <div
+        style="
+          width: 90%;
+          background-color: gainsboro;
+          text-align: justify;
+          padding: 10px;
+          border-radius: 6px;
+        "
+      >
+        Load an svg file as inline SVG. This provides dynamic svg applications
+        seamless DOM access to its elements. Uses <b>XMLHttpRequest</b>. It can
+        be loaded as a DIV's <b>innerHTML</b> via a string dump
+        (<b>responseText</b>).
+      </div>
+      <div id="svgDiv"></div>
+      <p><button onClick="changeSomeValues()">change</button></p>
+      SVG DOM:<br />
+      <textarea
+        id="mySvgValue"
+        style="
+          width: 90%;
+          height: 200px;
+          font-size: 120%;
+          font-family: lucida console;
+        "
+      ></textarea>
+      <br />Javascript:<br />
+      <textarea
+        id="jsValue"
+        style="
+          border-radius: 26px;
+          font-size: 110%;
+          font-weight: bold;
+          color: midnightblue;
+          padding: 16px;
+          background-color: beige;
+          border-width: 0px;
+          font-size: 100%;
+          font-family: lucida console;
+          width: 90%;
+          height: 400px;
+        "
+      ></textarea>
+    </center>
+    <div
+      id="browserDiv"
+      style="
+        padding: 3px;
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        background-color: gainsboro;
+      "
+    ></div>
+
+    <script id="myScript">
+      function loadSVGasXML() {
+        var SVGFile =
+          "http://upload.wikimedia.org/wikipedia/en/4/4a/Commons-logo.svg";
+        var loadXML = new XMLHttpRequest();
+        function handler() {
+          if (loadXML.readyState == 4 && loadXML.status == 200) {
+            svgDiv.innerHTML = loadXML.responseText;
+            mySvgValue.value = svgDiv.innerHTML;
+          }
+        }
+        if (loadXML != null) {
+          loadXML.open("GET", SVGFile, true);
+          loadXML.onreadystatechange = handler;
+          loadXML.send();
+        }
+      }
+      //--button---
+      function changeSomeValues() {
+        path4653.style.fill = "green";
+        mySvgValue.value = svgDiv.innerHTML;
+      }
+    </script>
+    <script>
+      document.addEventListener("onload", init(), false);
+      function init() {
+        loadSVGasXML();
+        jsValue.value = myScript.text;
+        mySvgValue.value = svgDiv.innerHTML;
+      }
+    </script>
+  </body>
+</html>
