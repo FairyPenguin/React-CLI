@@ -102,7 +102,23 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
-## [0.0.14] - 2024-05-18
+## [0.0.15] - 2024-05-18
+
+### Added
+
+-
+
+### Changed
+
+- Minor changes in the project structure
+
+### Fixed
+
+- "Fix: paths bugs"
+
+---
+
+## [0.0.16] - 2024-05-18
 
 ### Added
 
@@ -114,4 +130,39 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 
-- "Fix: Templates Paths Errors again"
+- "Fix: Persisted templates Paths Errors"
+
+---
+
+## [0.0.17] - 2024-05-18
+
+### Added
+
+- React-Outil Logo, New logo for the tool was added.
+- Started writing the docs.
+
+### Changed
+
+-
+
+### Fixed
+
+- "Fix: Templates Paths Errors Finally"
+
+---
+
+## [0.0.18] - 2024-05-19
+
+### Added
+
+- New section in the docs.
+
+### Changed
+
+-
+
+### Fixed
+
+- "Fix: The const template for React-Components & Nextjs Routes in now working 100%"
+
+---
