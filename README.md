@@ -8,6 +8,7 @@
 
 ```sh
 > NPM
+
 npm install -g react-outil
 ```
 
@@ -53,3 +54,7 @@ npx react-outil
 ```
 
 - You will be presented with the welcome screen and the first question.
+
+For the updated docs:
+
+[text](https://github.com/FairyPenguin/React-CLI#readme)
