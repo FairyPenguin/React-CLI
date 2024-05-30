@@ -57,4 +57,4 @@ npx react-outil
 
 For the updated docs:
 
-[text](https://github.com/FairyPenguin/React-CLI#readme)
+[Documentation](https://github.com/FairyPenguin/React-CLI#readme)
