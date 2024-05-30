@@ -8,7 +8,7 @@ export default async function componentNameQuestion(choices: UserChoicesType) {
         name: "Component Name",
         type: "input",
         validate: (input: string) => {
-            const allowedCharacters = /^[a-zA-Z0-9_]+$/;
+            const allowedCharacters = /^[a-zA-Z0-9_-]+$/;
             if (input.match(allowedCharacters)) {
                 return true;
             }

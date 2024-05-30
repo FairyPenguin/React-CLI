@@ -8,19 +8,19 @@
 
 ```sh
 > NPM
-npm i react-outil
+npm install -g react-outil
 ```
 
 ```sh
 > PNPM
 
-pnpm add react-outil
+pnpm -g add react-outil
 ```
 
 ```sh
 > Yarn
 
-yarn install react-outil
+yarn add global react-outil
 ```
 
 ## Introduction
@@ -38,4 +38,18 @@ in Each choice you have other sub-choices like creating a CSS-Modules file, Sub-
 - Choosing Function keyword VS Const for the components and routes.
 - For react components you can choose between single file component or Folder/File component (The component file is inside a folder).
 
-## Table Of Contents:
+## Usage:
+
+- Once installed globally, cd to the directory where you want to generate the components and type:
+
+```sh
+react-outil
+```
+
+If this didn't work try
+
+```sh
+npx react-outil
+```
+
+- You will be presented with the welcome screen and the first question.
